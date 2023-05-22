@@ -16,26 +16,39 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         window = stage;
-        changeScene("login");
+        changeScene(newScene(newFXML("login"), 800, 600));
     }
 
     public static void changeRoot(String fxml) throws IOException {
-        currentScene.setRoot(loadFXML(fxml));
+        currentScene.setRoot(newFXML(fxml).load());
     }
     
     public static void changeTitle(String title) {
         window.setTitle(title);
     }
     
-    public static void changeScene(String scene) throws IOException {
-        currentScene = new Scene(loadFXML(scene), 800, 600);
+    public static void changeScene(Scene scene) throws IOException {
+        currentScene = scene;
         window.setScene(currentScene);
         window.show();
     }
+    
+    public static Stage newWindow(Scene scene) {
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        return stage;
+    }
+    
+    public static Scene newScene(Parent parent, int width, int height) throws IOException {
+        return new Scene(parent, width, height);
+    }
+    
+    public static Scene newScene(FXMLLoader loader, int width, int height) throws IOException {
+        return new Scene(loader.load(), width, height);
+    }
 
-    public static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/view/" + fxml + ".fxml"));
-        return fxmlLoader.load();
+    public static FXMLLoader newFXML(String fxml) throws IOException {
+        return new FXMLLoader(App.class.getResource("/view/" + fxml + ".fxml"));
     }
 
     public static void main(String[] args) {

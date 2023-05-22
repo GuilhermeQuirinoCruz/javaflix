@@ -2,6 +2,7 @@ controller\AdminController.class
 model\dao\GeneroDAOMysql.class
 service\GeneroService.class
 model\Genero.class
+controller\GeneroController.class
 model\database\Database.class
 model\database\DatabaseFactory.class
 controller\LoginController.class

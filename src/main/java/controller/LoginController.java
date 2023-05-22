@@ -23,8 +23,9 @@ public class LoginController implements Initializable {
     
     @FXML
     private void Entrar() throws IOException {
-        if (txtEmail.getText().equals("admin")){
-            App.changeScene("admin");
-        }
+//        if (txtEmail.getText().equals("admin")){
+//            App.changeScene("admin");
+//        }
+        App.changeScene(App.newScene(App.newFXML("admin"), 800, 600));
     }
 }

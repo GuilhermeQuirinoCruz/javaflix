@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
 
 public class AdminController implements Initializable {
@@ -31,13 +30,13 @@ public class AdminController implements Initializable {
     
     @FXML
     private void OpenGenero(ActionEvent event) throws IOException {
-        SplitPane spGenero = (SplitPane) App.loadFXML("genero");
-        anchorPane.getChildren().setAll(spGenero);
+        AnchorPane apGenero = (AnchorPane) App.newFXML("generoList").load();
+        anchorPane.getChildren().setAll(apGenero);
         
-        AnchorPane.setBottomAnchor(spGenero, 0d);
-        AnchorPane.setTopAnchor(spGenero, 0d);
-        AnchorPane.setLeftAnchor(spGenero, 0d);
-        AnchorPane.setRightAnchor(spGenero, 0d);
+        AnchorPane.setBottomAnchor(apGenero, 0d);
+        AnchorPane.setTopAnchor(apGenero, 0d);
+        AnchorPane.setLeftAnchor(apGenero, 0d);
+        AnchorPane.setRightAnchor(apGenero, 0d);
     }
 
 }

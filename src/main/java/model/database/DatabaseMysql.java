@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import model.dao.GeneroDAO;
 import model.dao.GeneroDAOMysql;
+import model.dao.MidiaDAO;
+import model.dao.MidiaDAOMysql;
 
 public class DatabaseMysql implements Database {
     
@@ -46,4 +48,10 @@ public class DatabaseMysql implements Database {
     public GeneroDAO getGeneroDAO() {
         return new GeneroDAOMysql(this);
     }
+    
+    @Override
+    public MidiaDAO getMidiaDAO() {
+        return new MidiaDAOMysql(this);
+    }
+    
 }

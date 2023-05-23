@@ -1,6 +1,7 @@
 package model.database;
 
 import model.dao.GeneroDAO;
+import model.dao.MidiaDAO;
 
 public interface Database {
     
@@ -9,4 +10,5 @@ public interface Database {
     public void Desconectar();
     
     public GeneroDAO getGeneroDAO();
+    public MidiaDAO getMidiaDAO();
 }

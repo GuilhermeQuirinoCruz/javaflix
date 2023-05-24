@@ -31,6 +31,7 @@ public class HBoxCell extends HBox {
             button.setText(textButton);
         }
         button.setMaxHeight(Double.MAX_VALUE);
+        button.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(button, Priority.NEVER);
         
         return button;

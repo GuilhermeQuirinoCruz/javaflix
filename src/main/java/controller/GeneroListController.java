@@ -154,7 +154,7 @@ public class GeneroListController implements Initializable {
             AtualizarGenero();
         });
         
-        AbrirTelaCadastro(cells, botoes, "Atualiar Gênero");
+        AbrirTelaCadastro(cells, botoes, "Atualizar Gênero");
     }
     
     private void CadastrarGenero() {

@@ -27,4 +27,6 @@ public abstract class MidiaDAO {
     public abstract boolean Atualizar();
     public abstract boolean Excluir();
     public abstract ArrayList<Midia> Listar();
+    public abstract ArrayList<Midia> ListarResumido();
+    public abstract Midia getMidiaById(int id);
 }

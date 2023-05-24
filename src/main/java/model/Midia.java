@@ -2,6 +2,7 @@
 
 package model;
 
+
 /**
  *
  * @author bryan
@@ -9,31 +10,34 @@ package model;
 public class Midia {
     
     private int id;
-    private int idGenero;
+    private Genero genero;
     private String titulo;
     private String descricao;
     private String video;
     private String capa;
+    private String trailer;
 
-    public Midia(int id, int idGenero, String titulo, String descricao, String video, String capa) {
+    public Midia(int id, Genero genero, String titulo, String descricao, String video, String capa,String trailer) {
         this.id = id;
-        this.idGenero = idGenero;
+        this.genero = genero;
         this.titulo = titulo;
         this.descricao = descricao;
         this.video = video;
         this.capa = capa;
+        this.trailer = trailer;
     }
     
     public Midia() {
         
     }
     
-    public Midia(int idGenero, String titulo, String descricao, String video, String capa) {
-        this.idGenero = idGenero;
+    public Midia(Genero genero, String titulo, String descricao, String video, String capa, String trailer) {
+        this.genero = genero;
         this.titulo = titulo;
         this.descricao = descricao;
         this.video = video;
         this.capa = capa;
+        this.trailer = trailer;
     }
     
     public Midia(int id) {
@@ -49,12 +53,12 @@ public class Midia {
         this.id = id;
     }
 
-    public int getIdGenero() {
-        return idGenero;
+    public Genero getGenero() {
+        return genero;
     }
 
-    public void setIdGenero(int idGenero) {
-        this.idGenero = idGenero;
+    public void setGenero(Genero genero) {
+        this.genero = genero;
     }
 
     public String getTitulo() {
@@ -88,6 +92,16 @@ public class Midia {
     public void setCapa(String capa) {
         this.capa = capa;
     }
+
+    public String getTrailer() {
+        return trailer;
+    }
+
+    public void setTrailer(String trailer) {
+        this.trailer = trailer;
+    }
+    
+    
     
     
     

@@ -38,5 +38,16 @@ public class AdminController implements Initializable {
         AnchorPane.setLeftAnchor(apGenero, 0d);
         AnchorPane.setRightAnchor(apGenero, 0d);
     }
+    
+     @FXML
+    private void OpenMidia(ActionEvent event) throws IOException {
+        AnchorPane apMidia = (AnchorPane) App.newFXML("midiaList").load();
+        anchorPane.getChildren().setAll(apMidia);
+        
+        AnchorPane.setBottomAnchor(apMidia, 0d);
+        AnchorPane.setTopAnchor(apMidia, 0d);
+        AnchorPane.setLeftAnchor(apMidia, 0d);
+        AnchorPane.setRightAnchor(apMidia, 0d);
+    }
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -13,7 +14,21 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <VBox fx:id="vBoxGenero" alignment="CENTER" layoutX="15.0" layoutY="50.0" prefHeight="251.0" prefWidth="570.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
+      <VBox fx:id="vBoxGenero" alignment="CENTER" layoutX="15.0" layoutY="50.0" prefHeight="251.0" prefWidth="570.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
+         <children>
+            <HBox fx:id="hBoxId" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblId" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Nome" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtNome" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="38.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children></VBox>
       <HBox fx:id="hBoxBotoes" layoutX="385.0" layoutY="373.0" prefHeight="25.0" prefWidth="200.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0" />
    </children>
 </AnchorPane>

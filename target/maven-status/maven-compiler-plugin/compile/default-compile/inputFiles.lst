@@ -1,31 +1,26 @@
-<<<<<<< HEAD
-C:\Users\winte\Documents\java\javaflix\src\main\java\controller\GeneroController.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\model\dao\GeneroDAO.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\controller\LoginController.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\model\database\DatabaseFactory.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\controller\AdminController.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\main\App.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\model\database\DatabaseMysql.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\model\dao\GeneroDAOMysql.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\module-info.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\service\GeneroService.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\model\database\Database.java
-C:\Users\winte\Documents\java\javaflix\src\main\java\model\Genero.java
-=======
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\main\App.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\module-info.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\ui\SVGIcon.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\model\dao\GeneroDAOMysql.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\model\database\DatabaseMysql.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\model\database\DatabaseFactory.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\ui\NoSelectionModel.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\controller\AdminController.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\controller\GeneroController.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\service\GeneroService.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\controller\LoginController.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\model\database\Database.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\model\Genero.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\ui\HBoxCell.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\model\dao\GeneroDAO.java
-D:\Faculdade\5º Semestre\LInguagem de Programação I\Javaflix\src\main\java\controller\GeneroListController.java
->>>>>>> d86b2b1a5441794274890298637abcbd3e86fb0f
+/Users/bryan/Downloads/javaflix/src/main/java/model/Genero.java
+/Users/bryan/Downloads/javaflix/src/main/java/controller/MidiaController.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/dao/GeneroDAO.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/Usuario.java
+/Users/bryan/Downloads/javaflix/src/main/java/service/UsuarioService.java
+/Users/bryan/Downloads/javaflix/src/main/java/ui/NoSelectionModel.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/Midia.java
+/Users/bryan/Downloads/javaflix/src/main/java/controller/MidiaListController.java
+/Users/bryan/Downloads/javaflix/src/main/java/main/App.java
+/Users/bryan/Downloads/javaflix/src/main/java/controller/AdminController.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/dao/UsuarioDAOMysql.java
+/Users/bryan/Downloads/javaflix/src/main/java/controller/GeneroListController.java
+/Users/bryan/Downloads/javaflix/src/main/java/controller/GeneroController.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/database/Database.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/dao/MidiaDAO.java
+/Users/bryan/Downloads/javaflix/src/main/java/ui/SVGIcon.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/database/DatabaseFactory.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/dao/UsuarioDAO.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/dao/MidiaDAOMysql.java
+/Users/bryan/Downloads/javaflix/src/main/java/controller/LoginController.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/dao/GeneroDAOMysql.java
+/Users/bryan/Downloads/javaflix/src/main/java/model/database/DatabaseMysql.java
+/Users/bryan/Downloads/javaflix/src/main/java/service/MidiaService.java
+/Users/bryan/Downloads/javaflix/src/main/java/module-info.java
+/Users/bryan/Downloads/javaflix/src/main/java/service/GeneroService.java
+/Users/bryan/Downloads/javaflix/src/main/java/ui/HBoxCell.java

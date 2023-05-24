@@ -12,5 +12,5 @@ public interface Database {
     
     public GeneroDAO getGeneroDAO();
     public MidiaDAO getMidiaDAO();
-    public UsuarioDao getUsuarioDAO();
+    public UsuarioDAO getUsuarioDAO();
 }

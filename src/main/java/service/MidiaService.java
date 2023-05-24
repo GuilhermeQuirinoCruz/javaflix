@@ -51,6 +51,23 @@ public class MidiaService {
         return midias;
     }
     
+    public ArrayList<Midia> ListarResumido() {
+        this.database.Conectar();
+        ArrayList<Midia> midias = this.midiaDAO.ListarResumido();
+        this.database.Desconectar();
+        
+        return midias;
+    }
+    
+    public Midia GetMidiaById(int id){
+        this.database.Conectar();
+        Midia midia = this.midiaDAO.getMidiaById(id);
+        return midia;
+        
+    }
+    
+    
+    
     
     
     

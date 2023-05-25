@@ -16,8 +16,8 @@
       </Label>
       <TableView fx:id="tvGeneros" focusTraversable="false" layoutX="23.0" layoutY="74.0" prefHeight="268.0" prefWidth="570.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
         <columns>
-          <TableColumn fx:id="tcId" prefWidth="75.0" text="ID" />
-          <TableColumn fx:id="tcNome" prefWidth="75.0" text="Nome" />
+          <TableColumn fx:id="tcId" prefWidth="75.0" style="-fx-alignment: CENTER;" text="ID" />
+          <TableColumn fx:id="tcNome" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Nome" />
             <TableColumn fx:id="tcEditar" prefWidth="75.0" text="Editar" />
             <TableColumn fx:id="tcExcluir" prefWidth="75.0" text="Excluir" />
         </columns>

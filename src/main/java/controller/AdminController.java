@@ -28,26 +28,28 @@ public class AdminController implements Initializable {
         
     }    
     
+    private void SetAnchor(AnchorPane anchorPane)
+    {
+        AnchorPane.setBottomAnchor(anchorPane, 0d);
+        AnchorPane.setTopAnchor(anchorPane, 0d);
+        AnchorPane.setLeftAnchor(anchorPane, 0d);
+        AnchorPane.setRightAnchor(anchorPane, 0d);
+    }
+    
     @FXML
     private void OpenGenero(ActionEvent event) throws IOException {
         AnchorPane apGenero = (AnchorPane) App.newFXML("generoList").load();
         anchorPane.getChildren().setAll(apGenero);
         
-        AnchorPane.setBottomAnchor(apGenero, 0d);
-        AnchorPane.setTopAnchor(apGenero, 0d);
-        AnchorPane.setLeftAnchor(apGenero, 0d);
-        AnchorPane.setRightAnchor(apGenero, 0d);
+        SetAnchor(apGenero);
     }
     
-     @FXML
+    @FXML
     private void OpenMidia(ActionEvent event) throws IOException {
         AnchorPane apMidia = (AnchorPane) App.newFXML("midiaList").load();
         anchorPane.getChildren().setAll(apMidia);
         
-        AnchorPane.setBottomAnchor(apMidia, 0d);
-        AnchorPane.setTopAnchor(apMidia, 0d);
-        AnchorPane.setLeftAnchor(apMidia, 0d);
-        AnchorPane.setRightAnchor(apMidia, 0d);
+        SetAnchor(apMidia);
     }
 
 }

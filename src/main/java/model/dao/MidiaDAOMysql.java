@@ -137,10 +137,9 @@ public class MidiaDAOMysql extends MidiaDAO {
         } catch (SQLException e) {
             return null;
         }
-        
     }
     
-     @Override
+    @Override
     public ArrayList<Midia> ListarResumido() {
         try {
             this.connection = dbMysql.getConnection();
@@ -191,7 +190,7 @@ public class MidiaDAOMysql extends MidiaDAO {
     public ArrayList<Midia> ListarPorGenero(int idGenero) {
         try {
             this.connection = dbMysql.getConnection();
-            String sql = "SELECT m.id,m.titulo,m.descricao,g.nome AS nomeGenero FROM midia m JOIN genero g ON m.idGenero = g.id WHERE g.id = ? ORDER BY m.id;";
+            String sql = "SELECT m.id,m.capa FROM midia m JOIN genero g ON m.idGenero = g.id WHERE g.id = ? ORDER BY m.id;";
             comando = connection.prepareStatement(sql);
             comando.setInt(1, idGenero);
             ResultSet rs = comando.executeQuery();
@@ -200,8 +199,7 @@ public class MidiaDAOMysql extends MidiaDAO {
             while (rs.next()) {
                 Midia midia = new Midia();
                 midia.setId(rs.getInt("id"));
-                midia.setTitulo(rs.getString("titulo")); 
-                midia.setGenero(new Genero(rs.getString("nomeGenero")));
+                midia.setCapa(rs.getString("capa"));
                 
                 midias.add(midia);
             }

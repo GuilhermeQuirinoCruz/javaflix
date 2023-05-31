@@ -4,20 +4,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
 import javafx.scene.Node;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import main.App;
 import model.Genero;
 import model.Midia;
@@ -30,34 +28,50 @@ public class HomeController implements Initializable {
     private Label lblNome;
     @FXML
     private ListView lvMidias;
+    @FXML
+    private ImageView imgLogo;
+    @FXML
+    private ImageView imgUser;
     
     private GeneroService generoService;
     private MidiaService midiaService;
-    private AnchorPane apMidiaCard;
-    private FXMLLoader midiaCardLoader;
+    private ListView lvCards;
+    private FXMLLoader midiaCardRowLoader;
     
-    private ArrayList<ListView> listViewsCards;
+    private final String URL_LOGO = "https://img.freepik.com/icones-gratis/netflix_318-566093.jpg";
+    private final String URL_USER = "https://cdn-icons-png.flaticon.com/512/8792/8792047.png";
+    
+    private ArrayList<ListView> listViewsCards = new ArrayList<>();;
+    private ObservableList<Node> nodes;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        App.changeTitle("JAVAFLIX");
+        
         generoService = new GeneroService();
         midiaService = new MidiaService();
-        
-        Platform.runLater(() -> {
-            Task taskLvMidias = new Task<Void>() {
-                @Override
-                protected Void call() throws Exception {
-                    Thread.sleep(100);
-                    CarregarListViewMidias();
 
-                    return null;
-                }
-            };
-            
-            Thread threadMidias = new Thread(taskLvMidias);
-            threadMidias.setDaemon(true);
-            threadMidias.start();
-        });
+        Platform.runLater(new Thread(new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+                imgLogo.setImage(new Image(URL_LOGO));
+                imgUser.setImage(new Image(URL_USER));
+
+                return null;
+            }
+        }));
+
+        Task taskLvMidias = new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+//                Thread.sleep(10);
+                CarregarListViewMidias();
+
+                return null;
+            }
+        };
+        
+        Platform.runLater(taskLvMidias);
     }
     
     @FXML
@@ -74,32 +88,11 @@ public class HomeController implements Initializable {
             
             ArrayList<Midia> midias = midiaService.ListarPorGenero(genero.getId());
             if (midias != null) {
-                ListView lvCards = new ListView();
-                lvCards.setOrientation(Orientation.HORIZONTAL);
-                lvCards.setPrefHeight(225);
+                midiaCardRowLoader = App.newFXML("midiaCardRow");
+                lvCards = (ListView) midiaCardRowLoader.load();
                 
-                Task taskLvCards = new Task<Void>() {
-                    @Override
-                    protected Void call() throws Exception {
-                        for (Midia midia : midias) {
-                            midiaCardLoader = App.newFXML("midiaCard");
-                            apMidiaCard = (AnchorPane) midiaCardLoader.load();
-//                            Thread.sleep(10);
-                            MidiaCardController midiaCardController = midiaCardLoader.getController();
-                            midiaCardController.BuildCard(midia, homeController);
-
-                            Platform.runLater(() -> {
-                                lvCards.getItems().add(apMidiaCard);
-                            });
-                        }
-                        
-                        return null;
-                    }
-                };
-                
-                Thread threadCards = new Thread(taskLvCards);
-                threadCards.setDaemon(true);
-                threadCards.start();
+                MidiaCardRowController midiaCardRowController = midiaCardRowLoader.getController();
+                midiaCardRowController.CarregarCards(genero.getId(), homeController);
                 
                 lvMidias.getItems().add(lvCards);
                 
@@ -109,6 +102,6 @@ public class HomeController implements Initializable {
     }
     
     public void CarregarMidia(Midia midia) {
-        
+        System.out.println(midia.getId());
     }
 }

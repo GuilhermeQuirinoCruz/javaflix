@@ -25,7 +25,7 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        App.changeTitle("Admin");
     }    
     
     private void SetAnchor(AnchorPane anchorPane)

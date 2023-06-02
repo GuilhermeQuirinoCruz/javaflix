@@ -11,11 +11,15 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import main.App;
 import model.Genero;
 import model.Midia;
@@ -101,7 +105,17 @@ public class HomeController implements Initializable {
         }
     }
     
-    public void CarregarMidia(Midia midia) {
-        System.out.println(midia.getId());
+    public void PlayMidia(Midia midia) throws IOException {
+        FXMLLoader loader = App.newFXML("midiaPlayer");
+        AnchorPane apMediaPlayer = (AnchorPane) loader.load();
+        
+        Scene sceneGenero = App.newScene(apMediaPlayer, 400, 300);
+        Stage stageMidiaPlayer = App.newWindow(sceneGenero);
+        stageMidiaPlayer.initModality(Modality.APPLICATION_MODAL);
+        
+        MidiaPlayerController midiaPlayerController = loader.getController();
+        midiaPlayerController.setMidia(midia);
+        
+        stageMidiaPlayer.show();
     }
 }

@@ -3,6 +3,7 @@ module main {
     requires javafx.base;
     requires javafx.controls;
     requires javafx.graphics;
+    requires javafx.media;
     requires java.sql;
     requires java.base;
 

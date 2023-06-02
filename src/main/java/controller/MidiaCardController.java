@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
@@ -69,7 +70,7 @@ public class MidiaCardController implements Initializable {
     }
     
     @FXML
-    private void PlayMidia() {
-        homeController.CarregarMidia(this.midia);
+    private void PlayMidia() throws IOException {
+        homeController.PlayMidia(this.midia);
     }
 }

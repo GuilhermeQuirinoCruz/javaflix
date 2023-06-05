@@ -1,5 +1,5 @@
-
 package service;
+
 import java.util.ArrayList;
 import model.Genero;
 import model.Midia;
@@ -32,7 +32,6 @@ public class MidiaService {
         this.midiaDAO.setMidia(midia);
         this.midiaDAO.Atualizar();
         this.database.Desconectar();
-        
     }
     
     public void Excluir(Midia midia){
@@ -40,7 +39,6 @@ public class MidiaService {
         this.midiaDAO.setMidia(midia);
         this.midiaDAO.Excluir();
         this.database.Desconectar();
-        
     }
     
     public ArrayList<Midia> Listar() {
@@ -62,14 +60,15 @@ public class MidiaService {
     public Midia GetMidiaById(int id){
         this.database.Conectar();
         Midia midia = this.midiaDAO.getMidiaById(id);
-        return midia;
         
+        return midia;
     }
     
-    
-    
-    
-    
-    
-    
+    public ArrayList<Midia> ListarPorGenero(int idGenero) {
+        this.database.Conectar();
+        ArrayList<Midia> midias = this.midiaDAO.ListarPorGenero(idGenero);
+        this.database.Desconectar();
+        
+        return midias;
+    }
 }

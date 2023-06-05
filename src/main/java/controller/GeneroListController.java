@@ -15,6 +15,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;

@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 
 public class Usuario {
@@ -7,13 +8,13 @@ public class Usuario {
     private String email;
     private String senha;
     private String nome;
-    private Calendar dataExpiracao;
+    private LocalDate dataExpiracao;
     private boolean admin;
     
     public Usuario(){
     }
 
-    public Usuario(int id, String email, String senha, String nome, Calendar dataExpiracao, boolean admin){
+    public Usuario(int id, String email, String senha, String nome, LocalDate dataExpiracao, boolean admin){
         this.id = id;
         this.email = email;
         this.senha = senha;
@@ -21,6 +22,21 @@ public class Usuario {
         this.dataExpiracao = dataExpiracao;
         this.admin = admin;
     }
+
+    public Usuario(String email, String senha) {
+        this.email = email;
+        this.senha = senha;
+    }
+    
+     public Usuario(String email) {
+        this.email = email;
+        
+    }
+     public Usuario(String email, int id) {
+        this.email = email;
+        this.id = id;
+    }
+    
     
     public int getId(){
         return this.id;
@@ -54,11 +70,11 @@ public class Usuario {
         this.nome = nome;
     }
     
-    public Calendar getDataExpiracao(){
+    public LocalDate getDataExpiracao(){
         return this.dataExpiracao;
     }
     
-    public void setDataExpiracao(Calendar dataExpiracao){
+    public void setDataExpiracao(LocalDate dataExpiracao){
         this.dataExpiracao = dataExpiracao;
     }
     

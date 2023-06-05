@@ -18,6 +18,9 @@ public abstract class UsuarioDAO {
     public abstract boolean Inserir();
     public abstract boolean Atualizar();
     public abstract boolean Excluir();
+    public abstract Usuario RetornaUsuarioByEmail(String email);
+    public abstract Usuario RetornaUsuarioById(int id);
     public abstract ArrayList<Usuario> Listar();
+    
     
 }

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package controller;
 
 import java.io.IOException;
@@ -15,6 +12,7 @@ import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class AdminController implements Initializable {
 
@@ -48,6 +46,12 @@ public class AdminController implements Initializable {
         AnchorPane.setTopAnchor(apMidia, 0d);
         AnchorPane.setLeftAnchor(apMidia, 0d);
         AnchorPane.setRightAnchor(apMidia, 0d);
+    }
+    
+    @FXML
+    private void SignOut() throws IOException{
+        App.changeScene(App.newScene(App.newFXML("login"), 800, 600));
+        //((Stage)btnGenero.getScene().getWindow()).close();
     }
 
 }

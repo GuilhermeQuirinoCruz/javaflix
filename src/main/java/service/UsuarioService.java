@@ -20,6 +20,12 @@ public class UsuarioService {
         this.usuarioDAO.setUsuario(usuario);
         this.usuarioDAO.Inserir();
         this.database.Desconectar();
+        
+        
+
+         
+
+        
     }
     
     public void Atualizar(Usuario usuario){
@@ -44,5 +50,21 @@ public class UsuarioService {
         this.database.Desconectar();
         
         return usuarios;
+    }
+    public Usuario RetornaUsuarioByEmail(String email){
+        this.database.Conectar();
+        Usuario usuario = this.usuarioDAO.RetornaUsuarioByEmail(email);
+        this.database.Desconectar();
+        return usuario;
+        
+        
+    }
+    public Usuario RetornaUsuarioById(int id){
+        this.database.Conectar();
+        Usuario usuario = this.usuarioDAO.RetornaUsuarioById(id);
+        this.database.Desconectar();
+        return usuario;
+        
+        
     }
 }

@@ -14,6 +14,7 @@
                <children>
                   <Button fx:id="btnGenero" mnemonicParsing="false" onAction="#OpenGenero" prefHeight="55.0" prefWidth="488.0" text="Gêneros" VBox.vgrow="ALWAYS" />
                   <Button fx:id="btnMidia" layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#OpenMidia" prefHeight="55.0" prefWidth="488.0" text="Midias" />
+                  <Button layoutX="15.0" layoutY="80.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="55.0" prefWidth="488.0" text="Sair " />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

@@ -73,4 +73,7 @@ public class MidiaCardController implements Initializable {
     private void PlayMidia() throws IOException {
         homeController.PlayMidia(this.midia);
     }
+    
+    
+    
 }

@@ -23,6 +23,7 @@ import javafx.stage.Stage;
 import main.App;
 import model.Genero;
 import model.Midia;
+import model.Usuario;
 import service.GeneroService;
 import service.MidiaService;
 
@@ -41,6 +42,8 @@ public class HomeController implements Initializable {
     private MidiaService midiaService;
     private ListView lvCards;
     private FXMLLoader midiaCardRowLoader;
+    private Usuario usuario;
+
     
     private final String URL_LOGO = "https://img.freepik.com/icones-gratis/netflix_318-566093.jpg";
     private final String URL_USER = "https://cdn-icons-png.flaticon.com/512/8792/8792047.png";
@@ -117,5 +120,14 @@ public class HomeController implements Initializable {
         midiaPlayerController.setMidia(midia);
         
         stageMidiaPlayer.show();
+    }
+    
+    public void SetUsuario(Usuario usuario){
+        this.usuario = usuario;
+    }
+    
+    public boolean isFavorited(int idMidia){
+        
+        return true;
     }
 }

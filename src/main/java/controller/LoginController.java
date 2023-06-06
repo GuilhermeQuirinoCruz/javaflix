@@ -17,10 +17,8 @@ import javafx.stage.Stage;
 import main.App;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Locale;
+import javafx.fxml.FXMLLoader;
+
 
 import service.UsuarioService;
 import model.Usuario;
@@ -31,6 +29,8 @@ public class LoginController implements Initializable {
     private TextField txtEmail;
     @FXML
     private PasswordField pfPassword;
+        HomeController homeController;
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -41,6 +41,7 @@ public class LoginController implements Initializable {
     @FXML
     private void Entrar() throws IOException {
         Usuario usuario = new Usuario();
+        
         UsuarioService usuarioService = new UsuarioService();
         String generatedPassword = null;
 
@@ -76,9 +77,20 @@ public class LoginController implements Initializable {
                     App.changeScene(App.newScene(App.newFXML("admin"), 800, 600));
 
                 } else {
+                     FXMLLoader loader = App.newFXML("home");
+                     homeController = loader.getController();
+                     homeController.SetUsuario(usuario);
+                     
+                    
+                    App.changeScene(App.newScene(App.newFXML("home"), 800, 600));
+                    
+                        
+                    }
                     // Aqui implementar a rot que vai pra home page do usuario
-                    System.out.println("É USUARIO COMUM");
-                }
+//                    App.changeScene(App.newScene(App.newFXML("home"), 800, 600));
+
+
+                
 
             } else {
                 System.out.println("Senha incorreta!");
@@ -101,6 +113,7 @@ public class LoginController implements Initializable {
             confirmacao.show();
 
         }
+        
         // ---------------------------------------------------------------------------
 
     }
@@ -114,4 +127,7 @@ public class LoginController implements Initializable {
         stageCadastro.show();
 
     }
+    
+    
 }
+

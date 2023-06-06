@@ -2,6 +2,7 @@ package model.dao;
 
 import java.util.ArrayList;
 import model.Usuario;
+import model.Midia;
 
 public abstract class UsuarioDAO {
     
@@ -20,6 +21,10 @@ public abstract class UsuarioDAO {
     public abstract boolean Excluir();
     public abstract Usuario RetornaUsuarioByEmail(String email);
     public abstract Usuario RetornaUsuarioById(int id);
+    public abstract boolean FavoritaMidia(int idUsuario, int idMidia);
+    public abstract boolean DesfavoritaMidia(int idUsuario, int idMidia);
+    public abstract ArrayList<Midia> ListaMidiaFavoritada(int idUsuario);
+    
     public abstract ArrayList<Usuario> Listar();
     
     

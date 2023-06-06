@@ -1,0 +1,64 @@
+-- -----------------------------------------------------
+-- Table genero
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS genero (
+  id INT NOT NULL AUTO_INCREMENT,
+  nome VARCHAR(50) NULL,
+  PRIMARY KEY (id));
+
+-- -----------------------------------------------------
+-- Table midia
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS midia (
+  id INT NOT NULL AUTO_INCREMENT,
+  titulo VARCHAR(100) NULL,
+  descricao VARCHAR(1000) NULL,
+  video VARCHAR(500) NULL,
+  capa VARCHAR(500) NULL,
+  trailer VARCHAR(500) NULL,
+  idGenero INT NOT NULL,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_midia_genero1
+  FOREIGN KEY (idGenero) REFERENCES genero (id));
+
+-- -----------------------------------------------------
+-- Table usuario
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS usuario (
+  id INT NOT NULL AUTO_INCREMENT,
+  email VARCHAR(100) NULL,
+  senha VARCHAR(50) NULL,
+  nome VARCHAR(50) NULL,
+  dataExpiracao DATE NULL,
+  admin BOOLEAN NULL,
+  PRIMARY KEY (id));
+
+-- -----------------------------------------------------
+-- Table cartao
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS cartao (
+  id INT NOT NULL AUTO_INCREMENT,
+  numero VARCHAR(45) NULL,
+  titular VARCHAR(45) NULL,
+  validade VARCHAR(45) NULL,
+  ativo BOOLEAN NULL,
+  bandeira VARCHAR(20) NULL,
+  idUsuario INT NOT NULL,
+  PRIMARY KEY (id, idUsuario),
+  CONSTRAINT fk_cartao_usuario1
+    FOREIGN KEY (idUsuario)
+    REFERENCES usuario (id));
+
+-- -----------------------------------------------------
+-- Table favorita
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS favorita (
+  idUsuario INT NOT NULL,
+  idMidia INT NOT NULL,
+  PRIMARY KEY (idUsuario, idMidia),
+  CONSTRAINT fk_usuario_has_midia_usuario1
+    FOREIGN KEY (idMidia)
+    REFERENCES midia (id),
+  CONSTRAINT fk_usuario_has_midia_midia1
+    FOREIGN KEY (idUsuario)
+    REFERENCES usuario (id));

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import model.Usuario;
 import model.database.DatabaseMysql;
 import  java.sql.Date;
+import model.Midia;
 
 public class UsuarioDAOMysql extends UsuarioDAO {
     
@@ -208,6 +209,104 @@ public class UsuarioDAOMysql extends UsuarioDAO {
             return null;
         }
        
+    }
+
+    @Override
+    public boolean FavoritaMidia(int idUsuario, int idMidia) {
+        try{
+            this.connection = dbMysql.getConnection();
+            String sql = "INSERT INTO favorita (idUsuario,idMidia) VALUES (?,?);";
+            this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            this.comando.setInt(1, idUsuario);
+            this.comando.setInt(2, idMidia);
+            
+            
+           if (this.comando.executeUpdate() > 0) {
+                this.connection.commit();
+                
+                return true;
+            } else {
+                this.connection.rollback();
+                return false;
+            }
+            
+            
+        }
+        catch(Exception e){
+             try {
+                this.connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return false;
+        }
+        
+    }
+
+    @Override
+    public ArrayList<Midia> ListaMidiaFavoritada(int idUsuario) {
+        try {
+            this.connection = dbMysql.getConnection();
+            String sql = "SELECT * FROM favorita f JOIN midia m ON f.idMidia = m.id WHERE f.idUsuario = ?;";
+            comando = connection.prepareStatement(sql);
+            this.comando.setInt(1, idUsuario);
+            ResultSet rs = comando.executeQuery();
+
+            ArrayList<Midia> midias = new ArrayList<>();
+            while (rs.next()) {
+                Midia midia = new Midia();
+                midia.setId(rs.getInt("id"));
+                midia.setTitulo(rs.getString("titulo"));
+                midia.setDescricao(rs.getString("descricao"));
+                midia.setCapa(rs.getString("capa"));
+                midia.setTrailer(rs.getString("trailer"));
+                midia.setVideo(rs.getString("video"));
+              
+               
+                
+                midias.add(midia);
+            }
+            return midias;
+
+            
+        } catch (SQLException e) {
+            return null;
+        }
+        
+        
+    }
+
+    @Override
+    public boolean DesfavoritaMidia(int idUsuario, int idMidia) {
+        try{
+            this.connection = dbMysql.getConnection();
+            String sql = "DELETE FROM favorita WHERE idUsuario = ? AND idMidia = ?;";
+            this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            this.comando.setInt(1, idUsuario);
+            this.comando.setInt(2, idMidia);
+            
+            
+           if (this.comando.executeUpdate() > 0) {
+                this.connection.commit();
+                
+                return true;
+            } else {
+                this.connection.rollback();
+                return false;
+            }
+            
+            
+        }
+        catch(Exception e){
+             try {
+                this.connection.rollback();
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+            return false;
+        }
+        
+        
     }
     
     

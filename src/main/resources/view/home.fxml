@@ -14,6 +14,7 @@
          <children>
             <ImageView fx:id="imgLogo" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
             <Button mnemonicParsing="false" onAction="#CarregarListViewMidias" text="Refresh" />
+            <Button mnemonicParsing="false" text="Favoritos" />
             <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label fx:id="lblNome" text="Guilherme" />

@@ -21,12 +21,6 @@ public class UsuarioService {
         this.usuarioDAO.setUsuario(usuario);
         this.usuarioDAO.Inserir();
         this.database.Desconectar();
-        
-        
-
-         
-
-        
     }
     
     public void Atualizar(Usuario usuario){
@@ -34,7 +28,6 @@ public class UsuarioService {
         this.usuarioDAO.setUsuario(usuario);
         this.usuarioDAO.Atualizar();
         this.database.Desconectar();
-        
     }
     
     public void Excluir(Usuario usuario){
@@ -42,7 +35,6 @@ public class UsuarioService {
         this.usuarioDAO.setUsuario(usuario);
         this.usuarioDAO.Excluir();
         this.database.Desconectar();
-        
     }
     
     public ArrayList<Usuario> Listar() {
@@ -52,22 +44,21 @@ public class UsuarioService {
         
         return usuarios;
     }
+    
     public Usuario RetornaUsuarioByEmail(String email){
         this.database.Conectar();
         Usuario usuario = this.usuarioDAO.RetornaUsuarioByEmail(email);
         this.database.Desconectar();
         return usuario;
-        
-        
     }
+    
     public Usuario RetornaUsuarioById(int id){
         this.database.Conectar();
         Usuario usuario = this.usuarioDAO.RetornaUsuarioById(id);
         this.database.Desconectar();
         return usuario;
-        
-        
     }
+    
     public boolean FavoritaMidia(int idUsuario, int idMidia){
         this.database.Conectar();
         this.usuarioDAO.FavoritaMidia(idUsuario, idMidia);
@@ -87,8 +78,5 @@ public class UsuarioService {
         ArrayList<Midia> midias = this.usuarioDAO.ListaMidiaFavoritada(idUsuario);
         this.database.Desconectar();
         return midias;
-        
     }
-    
-    
 }

@@ -1,16 +1,11 @@
 package service;
 
 import java.util.ArrayList;
-import model.Genero;
 import model.Midia;
 import model.dao.MidiaDAO;
 import model.database.Database;
 import model.database.DatabaseFactory;
 
-/**
- *
- * @author bryan
- */
 public class MidiaService {
     private Database database;
     private MidiaDAO midiaDAO;

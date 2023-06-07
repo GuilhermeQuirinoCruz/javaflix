@@ -9,14 +9,11 @@ import javafx.scene.control.Button;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import model.Genero;
 
 public class GeneroController implements Initializable {
 
-    @FXML
-    private AnchorPane apGenero;
     @FXML
     private Label lblTitulo;
     @FXML
@@ -28,20 +25,15 @@ public class GeneroController implements Initializable {
     @FXML
     private HBox hBoxId;
     
-    private Genero genero;
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
     }
     
     public void Carregar(Genero genero, boolean editar, ArrayList<Button> botoes) {
-        this.genero = genero;
-        
-        if (this.genero == null) {
+        if (genero == null) {
             lblTitulo.setText("Cadastro");
             hBoxId.setVisible(false);
-            this.genero = new Genero();
         } else {
             lblTitulo.setText("Visualizar/Editar");
             lblId.setText(String.valueOf(genero.getId()));
@@ -52,8 +44,7 @@ public class GeneroController implements Initializable {
     }
     
     public Genero getGenero(){
-        this.genero.setNome(txtNome.getText());
-        
-        return this.genero;
+        int id = hBoxId.isVisible() ? Integer.parseInt(lblId.getText()) : 0;
+        return new Genero(id, txtNome.getText());
     }
 }

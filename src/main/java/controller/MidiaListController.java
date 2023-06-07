@@ -1,4 +1,3 @@
-
 package controller;
 
 import java.io.IOException;
@@ -15,35 +14,26 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import main.App;
-import model.Genero;
 import model.Midia;
-import service.GeneroService;
 import service.MidiaService;
 import ui.HBoxCell;
 import ui.NoSelectionModel;
 import ui.SVGIcon;
 
-
 public class MidiaListController implements Initializable {
-
-
+    
     @FXML
     private TableView tvMidias;
-    @FXML
-    private Button btnCadastrar;
     @FXML
     private TableColumn<Midia, String> tcId;
     @FXML
@@ -55,30 +45,18 @@ public class MidiaListController implements Initializable {
     @FXML
     private TableColumn<Midia, Void> tcExcluir;
     
-    private ArrayList<Midia> midias;
     private MidiaService midiaService;
-    
-    private TextField txtTitulo;
-    private Label lblId;
+    private MidiaController midiaController;
     private Stage stageMidia;
-    MidiaController midiaController;
-   // MidiaController midiaController;
-
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         midiaService = new MidiaService();
         CarregarTableView();
-                
-        
-        
-        
-        
-        
     }  
     
     private void CarregarTableView(){
-        midias = midiaService.ListarResumido();
+        ArrayList<Midia> midias = midiaService.ListarResumido();
         tcId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcGenero.setCellValueFactory(new PropertyValueFactory<>("genero"));
         tcTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
@@ -157,7 +135,7 @@ public class MidiaListController implements Initializable {
         stageMidia.show();
     }
     
-     @FXML
+    @FXML
     private void AbrirCadastro() throws IOException {
         ArrayList<Button> botoes = new ArrayList<>();
         Button btnCadastrar = HBoxCell.getHBoxButton("Cadastrar");
@@ -169,7 +147,7 @@ public class MidiaListController implements Initializable {
         AbrirTelaCadastro(null, false, botoes);
     }
     
-     private void AbrirAtualizacao(Midia midia) throws IOException {
+    private void AbrirAtualizacao(Midia midia) throws IOException {
         ArrayList<Button> botoes = new ArrayList<>();
         Button btnAtualizar = HBoxCell.getHBoxButton("Atualizar");
         botoes.add(btnAtualizar);
@@ -180,20 +158,19 @@ public class MidiaListController implements Initializable {
         AbrirTelaCadastro(midia, true, botoes);
     }
      
-     private void CadastrarMidia() {
+    private void CadastrarMidia() {
         this.midiaService.Inserir(midiaController.getMidia());
         stageMidia.close();
         CarregarTableView();
     }
      
-     private void AtualizarMidia() {
-        Midia midia = midiaController.getMidia();
-        this.midiaService.Atualizar(midia);
+    private void AtualizarMidia() {
+        this.midiaService.Atualizar(midiaController.getMidia());
         stageMidia.close();
         CarregarTableView();
     }
      
-      private void ExcluirMidia(Midia midia) {
+    private void ExcluirMidia(Midia midia) {
         Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacao.setTitle("Confirme a exclusão");
         confirmacao.setHeaderText(null);
@@ -205,12 +182,4 @@ public class MidiaListController implements Initializable {
             CarregarTableView();
         }
     }
-     
-     
-     
-     
-    
-    
-    
-    
 }

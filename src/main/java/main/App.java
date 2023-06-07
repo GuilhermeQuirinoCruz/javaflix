@@ -50,7 +50,7 @@ public class App extends Application {
     public static FXMLLoader newFXML(String fxml) throws IOException {
         return new FXMLLoader(App.class.getResource("/view/" + fxml + ".fxml"));
     }
-
+    
     public static void main(String[] args) {
         launch();
     }

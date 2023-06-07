@@ -5,18 +5,8 @@ import model.Genero;
 
 public abstract class GeneroDAO {
     
-    private Genero genero;
-
-    public Genero getGenero() {
-        return this.genero;
-    }
-
-    public void setGenero(Genero genero) {
-        this.genero = genero;
-    }
-    
-    public abstract boolean Inserir();
-    public abstract boolean Atualizar();
-    public abstract boolean Excluir();
+    public abstract boolean Inserir(Genero genero);
+    public abstract boolean Atualizar(Genero genero);
+    public abstract boolean Excluir(int idGenero);
     public abstract ArrayList<Genero> Listar();
 }

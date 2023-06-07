@@ -71,7 +71,9 @@ public class MidiaController implements Initializable {
     
     public Midia getMidia(){
         Midia midia = new Midia();
-        midia.setId(Integer.parseInt(lblId.getText()));
+        if(hBoxId.isVisible()) {
+            midia.setId(Integer.parseInt(lblId.getText()));
+        }
         midia.setTitulo(txtTitulo.getText());
         midia.setDescricao(txtDescricao.getText());
         midia.setTrailer(txtTrailer.getText());

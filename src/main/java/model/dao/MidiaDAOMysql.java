@@ -20,17 +20,17 @@ public class MidiaDAOMysql extends MidiaDAO {
     }
 
     @Override
-    public boolean Inserir() {
+    public boolean Inserir(Midia midia) {
         try{
             this.connection = dbMysql.getConnection();
             String sql = "INSERT INTO midia (titulo,descricao,video,capa,idGenero,trailer) VALUES (?,?,?,?,?,?);";
             this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            this.comando.setString(1, this.getMidia().getTitulo());
-            this.comando.setString(2, this.getMidia().getDescricao());
-            this.comando.setString(3, this.getMidia().getVideo());
-            this.comando.setString(4, this.getMidia().getCapa());
-            this.comando.setInt(5, this.getMidia().getGenero().getId());
-            this.comando.setString(6, this.getMidia().getTrailer());
+            this.comando.setString(1, midia.getTitulo());
+            this.comando.setString(2, midia.getDescricao());
+            this.comando.setString(3, midia.getVideo());
+            this.comando.setString(4, midia.getCapa());
+            this.comando.setInt(5, midia.getGenero().getId());
+            this.comando.setString(6, midia.getTrailer());
            if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
                 return true;
@@ -50,18 +50,18 @@ public class MidiaDAOMysql extends MidiaDAO {
     }
 
     @Override
-    public boolean Atualizar() {
+    public boolean Atualizar(Midia midia) {
         try{
             this.connection = dbMysql.getConnection();
             String sql = "UPDATE  midia SET titulo = ?, descricao = ?, video = ?, capa = ?, idGenero = ?, trailer = ? WHERE id = ?;";
             this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            this.comando.setString(1, this.getMidia().getTitulo());
-            this.comando.setString(2, this.getMidia().getDescricao());
-            this.comando.setString(3, this.getMidia().getVideo());
-            this.comando.setString(4, this.getMidia().getCapa());
-            this.comando.setInt(5, this.getMidia().getGenero().getId());
-            this.comando.setString(6, this.getMidia().getTrailer());
-            this.comando.setInt(7, this.getMidia().getId());
+            this.comando.setString(1, midia.getTitulo());
+            this.comando.setString(2, midia.getDescricao());
+            this.comando.setString(3, midia.getVideo());
+            this.comando.setString(4, midia.getCapa());
+            this.comando.setInt(5, midia.getGenero().getId());
+            this.comando.setString(6, midia.getTrailer());
+            this.comando.setInt(7, midia.getId());
             
             if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
@@ -82,12 +82,12 @@ public class MidiaDAOMysql extends MidiaDAO {
     }
 
     @Override
-    public boolean Excluir() {
+    public boolean Excluir(int idMidia) {
          try {
             this.connection = dbMysql.getConnection();
             String sql = "DELETE FROM midia WHERE id = ?;";
             this.comando = this.connection.prepareStatement(sql);
-            this.comando.setInt(1, this.getMidia().getId());
+            this.comando.setInt(1, idMidia);
 
             if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();

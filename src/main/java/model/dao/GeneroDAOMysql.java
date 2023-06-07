@@ -20,12 +20,12 @@ public class GeneroDAOMysql extends GeneroDAO {
     }
     
     @Override
-    public boolean Inserir() {
+    public boolean Inserir(Genero genero) {
         try {
             this.connection = dbMysql.getConnection();
             String sql = "INSERT INTO genero (nome) VALUES (?);";
             this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            this.comando.setString(1, this.getGenero().getNome());
+            this.comando.setString(1, genero.getNome());
 
             if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
@@ -45,13 +45,13 @@ public class GeneroDAOMysql extends GeneroDAO {
     }
 
     @Override
-    public boolean Atualizar() {
+    public boolean Atualizar(Genero genero) {
         try {
             this.connection = dbMysql.getConnection();
             String sql = "UPDATE genero SET nome = ? WHERE id = ?;";
             this.comando = this.connection.prepareStatement(sql);
-            this.comando.setString(1, this.getGenero().getNome());
-            this.comando.setInt(2, this.getGenero().getId());
+            this.comando.setString(1, genero.getNome());
+            this.comando.setInt(2, genero.getId());
 
             if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
@@ -71,12 +71,12 @@ public class GeneroDAOMysql extends GeneroDAO {
     }
 
     @Override
-    public boolean Excluir() {
+    public boolean Excluir(int idGenero) {
         try {
             this.connection = dbMysql.getConnection();
             String sql = "DELETE FROM genero WHERE id = ?;";
             this.comando = this.connection.prepareStatement(sql);
-            this.comando.setInt(1, this.getGenero().getId());
+            this.comando.setInt(1, idGenero);
 
             if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();

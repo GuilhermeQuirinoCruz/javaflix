@@ -24,8 +24,5 @@ public abstract class UsuarioDAO {
     public abstract boolean FavoritaMidia(int idUsuario, int idMidia);
     public abstract boolean DesfavoritaMidia(int idUsuario, int idMidia);
     public abstract ArrayList<Midia> ListaMidiaFavoritada(int idUsuario);
-    
     public abstract ArrayList<Usuario> Listar();
-    
-    
 }

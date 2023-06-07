@@ -1,12 +1,5 @@
-
-
 package model;
 
-
-/**
- *
- * @author bryan
- */
 public class Midia {
     
     private int id;
@@ -42,7 +35,6 @@ public class Midia {
     
     public Midia(int id) {
         this.id = id;
-        
     }
 
     public int getId() {
@@ -100,17 +92,4 @@ public class Midia {
     public void setTrailer(String trailer) {
         this.trailer = trailer;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }

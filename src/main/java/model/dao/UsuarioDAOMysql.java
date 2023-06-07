@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import model.Usuario;
 import model.database.DatabaseMysql;
-import  java.sql.Date;
+import java.sql.Date;
 import model.Midia;
 
 public class UsuarioDAOMysql extends UsuarioDAO {
@@ -59,14 +59,14 @@ public class UsuarioDAOMysql extends UsuarioDAO {
     public boolean Atualizar() {
         try{
             this.connection = dbMysql.getConnection();
-            String sql = "UPDATE usuario SET email = ?,senha = ?,nome = ?,dataExpiracao = ?,admin = ? WHERE id = ?;";
+            String sql = "UPDATE usuario SET email = ?,senha = ?,nome = ?,admin = ? WHERE id = ?;";
             this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             this.comando.setString(1, this.getUsuario().getEmail());
             this.comando.setString(2, this.getUsuario().getSenha());
             this.comando.setString(3, this.getUsuario().getNome());
             //this.comando.setString(4, this.getUsuario().getDataExpiracao()); Converter Calendar para Date
-            this.comando.setBoolean(5, this.getUsuario().isAdmin());
-            this.comando.setInt(6, this.getUsuario().getId());
+            this.comando.setBoolean(4, this.getUsuario().isAdmin());
+            this.comando.setInt(5, this.getUsuario().getId());
             
            if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();

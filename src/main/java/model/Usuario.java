@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 
 public class Usuario {
     private int id;
@@ -28,15 +27,14 @@ public class Usuario {
         this.senha = senha;
     }
     
-     public Usuario(String email) {
+    public Usuario(String email) {
         this.email = email;
-        
     }
-     public Usuario(String email, int id) {
+     
+    public Usuario(String email, int id) {
         this.email = email;
         this.id = id;
     }
-    
     
     public int getId(){
         return this.id;

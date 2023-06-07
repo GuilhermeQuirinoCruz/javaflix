@@ -15,15 +15,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -39,9 +34,6 @@ import ui.SVGIcon;
 public class GeneroListController implements Initializable {
     
     @FXML
-    private ListView lvGeneros;
-    
-    @FXML
     private TableView tvGeneros;
     @FXML
     private TableColumn<Genero, String> tcId;
@@ -52,11 +44,7 @@ public class GeneroListController implements Initializable {
     @FXML
     private TableColumn<Genero, Void> tcExcluir;
     
-    private ArrayList<Genero> generos;
     private GeneroService generoService;
-    
-    private TextField txtNome;
-    private Label lblId;
     private Stage stageGenero;
     GeneroController generoController;
 
@@ -68,7 +56,7 @@ public class GeneroListController implements Initializable {
     }
     
     private void CarregarTableView() {
-        generos = generoService.Listar();
+        ArrayList<Genero> generos = generoService.Listar();
         
         tcId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcNome.setCellValueFactory(new PropertyValueFactory<>("nome"));

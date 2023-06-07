@@ -43,6 +43,4 @@ public class GeneroService {
         
         return generos;
     }
-    
-    
 }

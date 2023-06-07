@@ -10,10 +10,6 @@ import model.Genero;
 import model.Midia;
 import model.database.DatabaseMysql;
 
-/**
- *
- * @author bryan
- */
 public class MidiaDAOMysql extends MidiaDAO {
     private Connection connection;
     private PreparedStatement comando;
@@ -190,7 +186,7 @@ public class MidiaDAOMysql extends MidiaDAO {
     public ArrayList<Midia> ListarPorGenero(int idGenero) {
         try {
             this.connection = dbMysql.getConnection();
-            String sql = "SELECT m.id,m.capa,m.trailer,m.video FROM midia m JOIN genero g ON m.idGenero = g.id WHERE g.id = ? ORDER BY m.id;";
+            String sql = "SELECT m.id,m.titulo,m.capa,m.trailer,m.video FROM midia m JOIN genero g ON m.idGenero = g.id WHERE g.id = ? ORDER BY m.id;";
             comando = connection.prepareStatement(sql);
             comando.setInt(1, idGenero);
             ResultSet rs = comando.executeQuery();
@@ -199,8 +195,9 @@ public class MidiaDAOMysql extends MidiaDAO {
             while (rs.next()) {
                 Midia midia = new Midia();
                 midia.setId(rs.getInt("id"));
+                midia.setTitulo(rs.getString("titulo"));
                 midia.setCapa(rs.getString("capa"));
-                midia.setVideo(rs.getString("capa"));
+                midia.setVideo(rs.getString("video"));
                 midia.setTrailer(rs.getString("trailer"));
                 
                 midias.add(midia);

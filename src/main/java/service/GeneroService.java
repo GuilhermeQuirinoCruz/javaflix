@@ -17,22 +17,19 @@ public class GeneroService {
     
     public void Inserir(Genero genero) {
         this.database.Conectar();
-        this.generoDAO.setGenero(genero);
-        this.generoDAO.Inserir();
+        this.generoDAO.Inserir(genero);
         this.database.Desconectar();
     }
     
     public void Atualizar(Genero genero) {
         this.database.Conectar();
-        this.generoDAO.setGenero(genero);
-        this.generoDAO.Atualizar();
+        this.generoDAO.Atualizar(genero);
         this.database.Desconectar();
     }
     
-    public void Excluir(Genero genero) {
+    public void Excluir(int idGenero) {
         this.database.Conectar();
-        this.generoDAO.setGenero(genero);
-        this.generoDAO.Excluir();
+        this.generoDAO.Excluir(idGenero);
         this.database.Desconectar();
     }
     

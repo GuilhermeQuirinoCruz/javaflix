@@ -99,7 +99,7 @@ public class MidiaListController implements Initializable {
                 btnExcluir.setGraphic(SVGIcon.getIcon("Excluir", "#FF0000"));
                 btnExcluir.setOnAction(e -> {
                     Midia midia = getTableView().getItems().get(getIndex());
-                    ExcluirMidia(midia);
+                    ExcluirMidia(midia.getId());
                 });
                 container = new HBox(10, btnExcluir);
                 container.setAlignment(Pos.CENTER);
@@ -159,18 +159,18 @@ public class MidiaListController implements Initializable {
     }
      
     private void CadastrarMidia() {
-        this.midiaService.Inserir(midiaController.getMidia());
+        this.midiaService.Inserir(this.midiaController.getMidia());
         stageMidia.close();
         CarregarTableView();
     }
-     
+    
     private void AtualizarMidia() {
-        this.midiaService.Atualizar(midiaController.getMidia());
+        this.midiaService.Atualizar(this.midiaController.getMidia());
         stageMidia.close();
         CarregarTableView();
     }
      
-    private void ExcluirMidia(Midia midia) {
+    private void ExcluirMidia(int idMidia) {
         Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacao.setTitle("Confirme a exclusão");
         confirmacao.setHeaderText(null);
@@ -178,7 +178,7 @@ public class MidiaListController implements Initializable {
         
         Optional<ButtonType> result = confirmacao.showAndWait();
         if (result.get() == ButtonType.OK) {
-            this.midiaService.Excluir(midia);
+            this.midiaService.Excluir(idMidia);
             CarregarTableView();
         }
     }

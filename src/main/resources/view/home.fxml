@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomeController">
+   <children>
+      <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="600.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="imgLogo" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" onAction="#CarregarListViewMidias" text="Refresh" />
+            <Button mnemonicParsing="false" text="Favoritos" visible="false" />
+            <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <MenuButton fx:id="mbConta" alignment="CENTER" mnemonicParsing="false">
+                    <items>
+                      <MenuItem mnemonicParsing="false" onAction="#AbrirConta" text="Minha Conta" />
+                      <MenuItem mnemonicParsing="false" onAction="#Sair" text="Sair" />
+                    </items>
+                     <graphic>
+                        <ImageView fx:id="imgUser" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                  </MenuButton>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </HBox>
+      <ListView fx:id="lvMidias" layoutX="14.0" layoutY="85.0" maxHeight="1.7976931348623157E308" prefHeight="310.0" prefWidth="590.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0" />
+   </children>
+</AnchorPane>

@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
+
 package controller;
 
 import java.io.IOException;
@@ -14,8 +11,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.Button;
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class AdminController implements Initializable {
 
@@ -26,18 +23,37 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        App.changeTitle("Admin");
     }    
+    
+    private void SetAnchor(AnchorPane anchorPane)
+    {
+        AnchorPane.setBottomAnchor(anchorPane, 0d);
+        AnchorPane.setTopAnchor(anchorPane, 0d);
+        AnchorPane.setLeftAnchor(anchorPane, 0d);
+        AnchorPane.setRightAnchor(anchorPane, 0d);
+    }
     
     @FXML
     private void OpenGenero(ActionEvent event) throws IOException {
-        SplitPane spGenero = (SplitPane) App.loadFXML("genero");
-        anchorPane.getChildren().setAll(spGenero);
+        AnchorPane apGenero = (AnchorPane) App.newFXML("generoList").load();
+        anchorPane.getChildren().setAll(apGenero);
         
-        AnchorPane.setBottomAnchor(spGenero, 0d);
-        AnchorPane.setTopAnchor(spGenero, 0d);
-        AnchorPane.setLeftAnchor(spGenero, 0d);
-        AnchorPane.setRightAnchor(spGenero, 0d);
+        SetAnchor(apGenero);
+    }
+    
+    @FXML
+    private void OpenMidia(ActionEvent event) throws IOException {
+        AnchorPane apMidia = (AnchorPane) App.newFXML("midiaList").load();
+        anchorPane.getChildren().setAll(apMidia);
+        
+        SetAnchor(apMidia);
+    }
+    
+    @FXML
+    private void SignOut() throws IOException{
+        App.changeScene(App.newScene(App.newFXML("login"), 800, 600));
+        //((Stage)btnGenero.getScene().getWindow()).close();
     }
 
 }

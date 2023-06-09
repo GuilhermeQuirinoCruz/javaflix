@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MidiaController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MidiaController">
    <children>
       <Label fx:id="lblTitulo" alignment="CENTER" layoutX="285.0" layoutY="27.0" text="Label" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
          <font>
@@ -20,43 +20,43 @@
          <children>
             <HBox fx:id="hBoxId" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID" HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblId" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID" HBox.hgrow="ALWAYS" />
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-font-size: 13;" text="ID" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblId" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-font-size: 13;" text="ID" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Titulo" HBox.hgrow="ALWAYS" />
-                  <TextField fx:id="txtTitulo" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 13;" text="Titulo" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtTitulo" alignment="CENTER" style="-fx-min-height: 30; -fx-min-width: 500;" styleClass="text-field" stylesheets="@style.css" />
                </children>
             </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0" spacing="7.0">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="7.0">
                <children>
-                  <Label text="Descricao" />
+                  <Label style="-fx-font-size: 13;" text="Descricao" />
                   <TextField fx:id="txtDescricao" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0" spacing="29.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0" spacing="29.0">
                <children>
-                  <Label text="Video" />
+                  <Label style="-fx-font-size: 13;" text="Video" />
                   <TextField fx:id="txtVideo" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="196.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="196.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                <children>
-                  <Label text="Capa" />
+                  <Label style="-fx-font-size: 13;" text="Capa" />
                   <TextField fx:id="txtCapa" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="214.0" prefHeight="100.0" prefWidth="200.0" spacing="26.0">
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="214.0" prefHeight="100.0" prefWidth="200.0" spacing="26.0">
                <children>
-                  <Label text="Trailer" />
+                  <Label style="-fx-font-size: 13;" text="Trailer" />
                   <TextField fx:id="txtTrailer" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="226.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="226.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Genero" />
+                  <Label contentDisplay="CENTER" style="-fx-font-size: 13;" text="Genero" />
                   <ComboBox fx:id="cmbGenero" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="20.0" />

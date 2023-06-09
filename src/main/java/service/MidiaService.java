@@ -17,22 +17,19 @@ public class MidiaService {
     
     public void Inserir(Midia midia) {
         this.database.Conectar();
-        this.midiaDAO.setMidia(midia);
-        this.midiaDAO.Inserir();
+        this.midiaDAO.Inserir(midia);
         this.database.Desconectar();
     }
     
     public void Atualizar(Midia midia){
         this.database.Conectar();
-        this.midiaDAO.setMidia(midia);
-        this.midiaDAO.Atualizar();
+        this.midiaDAO.Atualizar(midia);
         this.database.Desconectar();
     }
     
-    public void Excluir(Midia midia){
+    public void Excluir(int idMidia){
         this.database.Conectar();
-        this.midiaDAO.setMidia(midia);
-        this.midiaDAO.Excluir();
+        this.midiaDAO.Excluir(idMidia);
         this.database.Desconectar();
     }
     

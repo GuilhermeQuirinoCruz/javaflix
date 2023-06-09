@@ -14,8 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -99,7 +97,7 @@ public class GeneroListController implements Initializable {
                 btnExcluir.setGraphic(SVGIcon.getIcon("Excluir", "#FF0000"));
                 btnExcluir.setOnAction(e -> {
                     Genero genero = getTableView().getItems().get(getIndex());
-                    ExcluirGenero(genero);
+                    ExcluirGenero(genero.getId());
                 });
                 container = new HBox(10, btnExcluir);
                 container.setAlignment(Pos.CENTER);
@@ -165,13 +163,12 @@ public class GeneroListController implements Initializable {
     }
     
     private void AtualizarGenero() {
-        Genero genero = generoController.getGenero();
-        this.generoService.Atualizar(genero);
+        this.generoService.Atualizar(generoController.getGenero());
         stageGenero.close();
         CarregarTableView();
     }
     
-    private void ExcluirGenero(Genero genero) {
+    private void ExcluirGenero(int idGenero) {
         Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacao.setTitle("Confirme a exclusão");
         confirmacao.setHeaderText(null);
@@ -179,7 +176,7 @@ public class GeneroListController implements Initializable {
         
         Optional<ButtonType> result = confirmacao.showAndWait();
         if (result.get() == ButtonType.OK) {
-            this.generoService.Excluir(genero);
+            this.generoService.Excluir(idGenero);
             CarregarTableView();
         }
     }

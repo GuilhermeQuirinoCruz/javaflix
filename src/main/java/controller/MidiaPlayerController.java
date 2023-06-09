@@ -57,25 +57,29 @@ public class MidiaPlayerController implements Initializable {
     }
     
     public void SetMidia(Midia midia) {
-        if (!midia.getVideo().equals(""))
-        {
-            mediaPlayer = new MediaPlayer(new Media(midia.getVideo()));
-        } else {
-            mediaPlayer = new MediaPlayer(new Media("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
-        }
-        
-        mediaPlayer.setVolume(0.5);
-        
         Platform.runLater(() -> {
+            if (!midia.getVideo().equals(""))
+            {
+                mediaPlayer = new MediaPlayer(new Media(midia.getVideo()));
+            } else {
+                mediaPlayer = new MediaPlayer(new Media("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+            }
+
+            mediaPlayer.setVolume(0.5);
             mediaView.setMediaPlayer(mediaPlayer);
 
             BindProgress();
             BindSize();
             BindVolume();
             AddSeekBehavior();
+            
+            mediaPlayer.setOnError(() -> {
+                System.out.println("Erro ao carregar vídeo. Tentando novamente...");
+                SetMidia(midia);
+            });
         });
     }
-
+    
     @FXML
     private void PlayMidia() {
         var status = mediaPlayer.getStatus();

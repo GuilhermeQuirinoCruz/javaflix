@@ -105,8 +105,6 @@ public class HomeController implements Initializable {
         
         final HomeController homeController = this;
         ArrayList<Genero> generos = generoService.Listar();
-        ArrayList<ListView> listViewsCards = new ArrayList<>();
-        
         for (Genero genero : generos) {
             ArrayList<Midia> midias = midiaService.ListarPorGenero(genero.getId());
             if (midias != null && !midias.isEmpty()) {
@@ -117,11 +115,9 @@ public class HomeController implements Initializable {
                 ListView lvCards = (ListView) midiaCardRowLoader.load();
                 
                 MidiaCardRowController midiaCardRowController = midiaCardRowLoader.getController();
-                midiaCardRowController.CarregarCards(genero.getId(), homeController);
+                midiaCardRowController.CarregarCards(genero, homeController);
                 
                 lvMidias.getItems().add(lvCards);
-                
-                listViewsCards.add(lvCards);
             }
         }
         
@@ -225,6 +221,20 @@ public class HomeController implements Initializable {
         } else {
             usuarioService.FavoritaMidia(usuario.getId(), idMidia);
         }
+    }
+    
+    public void ExibirDetalhesMidia(Midia midia) throws IOException {
+        FXMLLoader loader = App.newFXML("detalhes");
+        AnchorPane apDetalhes = (AnchorPane) loader.load();
+        
+        DetalhesController detalhesController = loader.getController();
+        detalhesController.CarregarMidia(midia);
+        detalhesController.SetHomeController(this);
+        
+        Stage stageDetalhes = App.newWindow(App.newScene(apDetalhes, 600, 500));
+        
+        stageDetalhes.initModality(Modality.APPLICATION_MODAL);
+        stageDetalhes.show();
     }
     
     @FXML

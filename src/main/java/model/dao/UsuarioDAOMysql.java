@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import model.database.DatabaseMysql;
 import model.Usuario;
 import java.sql.Date;
+import model.Genero;
 import model.Midia;
 
 public class UsuarioDAOMysql extends UsuarioDAO {
@@ -215,7 +216,7 @@ public class UsuarioDAOMysql extends UsuarioDAO {
     public ArrayList<Midia> ListaMidiasFavoritadas(int idUsuario) {
         try {
             this.connection = dbMysql.getConnection();
-            String sql = "SELECT * FROM midia m JOIN favorita f ON m.id = f.idMidia WHERE f.idUsuario = ?;";
+            String sql = "SELECT m.id,m.titulo,m.descricao,m.capa,m.trailer,m.video,g.id AS idGenero,g.nome AS nomeGenero FROM midia m JOIN favorita f ON m.id = f.idMidia JOIN genero g ON m.idGenero = g.id WHERE f.idUsuario = ?;";
             comando = connection.prepareStatement(sql);
             this.comando.setInt(1, idUsuario);
             ResultSet rs = comando.executeQuery();
@@ -229,6 +230,7 @@ public class UsuarioDAOMysql extends UsuarioDAO {
                 midia.setCapa(rs.getString("capa"));
                 midia.setTrailer(rs.getString("trailer"));
                 midia.setVideo(rs.getString("video"));
+                midia.setGenero(new Genero(rs.getInt("idGenero"), rs.getString("nomeGenero")));
               
                 midias.add(midia);
             }

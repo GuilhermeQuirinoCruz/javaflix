@@ -38,11 +38,7 @@ public class MidiaCardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Platform.runLater(() -> {
-            btnPlay.setGraphic(SVGIcon.getIcon("Play", "#000000"));
-            btnFavorito.setGraphic(SVGIcon.getIcon("Favorito", "#000000"));
-            btnDetalhes.setGraphic(SVGIcon.getIcon("Mais", "#000000"));
-        });
+        
     }
     
     public void BuildCard(Midia midia, HomeController homeController) {
@@ -68,6 +64,16 @@ public class MidiaCardController implements Initializable {
         Thread threadCapa = new Thread(taskCapa);
         threadCapa.setDaemon(true);
         threadCapa.start();
+        
+        Platform.runLater(() -> {
+            if (this.midia.getVideo().equals("")) {
+                btnPlay.setText("EM BREVE");
+            } else {
+                btnPlay.setGraphic(SVGIcon.getIcon("Play", "#000000"));
+            }
+            btnFavorito.setGraphic(SVGIcon.getIcon("Favorito", "#000000"));
+            btnDetalhes.setGraphic(SVGIcon.getIcon("Mais", "#000000"));
+        });
     }
     
     @FXML
@@ -82,16 +88,18 @@ public class MidiaCardController implements Initializable {
     
     @FXML
     private void PlayMidia() throws IOException {
-        homeController.PlayMidia(this.midia);
+        if (!this.midia.getVideo().equals("")) {
+            homeController.PlayMidia(this.midia);
+        }
     }
     
     @FXML
-    private void Favoritar() {
+    private void Favoritar() throws IOException {
         homeController.FavoritarMidia(this.midia.getId(), this.midia.getTitulo());
     }
     
     @FXML
-    private void Detalhes() {
-        
+    private void Detalhes() throws IOException {
+        homeController.ExibirDetalhesMidia(this.midia);
     }
 }

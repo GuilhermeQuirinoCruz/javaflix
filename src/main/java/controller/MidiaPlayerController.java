@@ -19,7 +19,6 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import main.App;
 
 import model.Midia;
 import ui.SVGIcon;
@@ -41,7 +40,7 @@ public class MidiaPlayerController implements Initializable {
     @FXML
     private HBox hBoxControles;
     
-    MediaPlayer mediaPlayer;
+    private MediaPlayer mediaPlayer;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -13,6 +13,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 
 import main.App;
+import model.Genero;
 import model.Midia;
 import service.MidiaService;
 import ui.ListViewNoSelectionModel;
@@ -30,9 +31,10 @@ public class MidiaCardRowController implements Initializable {
         lvCards.setSelectionModel(new ListViewNoSelectionModel());
     }
     
-    public void CarregarCards(int idGenero, HomeController homeController) throws IOException {
-        ArrayList<Midia> midias = midiaService.ListarPorGenero(idGenero);
+    public void CarregarCards(Genero genero, HomeController homeController) throws IOException {
+        ArrayList<Midia> midias = midiaService.ListarPorGenero(genero.getId());
         for (Midia midia : midias) {
+            midia.setGenero(genero);
 //            final FXMLLoader midiaCardLoader = App.newFXML("midiaCard");
 //            final AnchorPane apMidiaCard = (AnchorPane) midiaCardLoader.load();
 //            MidiaCardController midiaCardController = midiaCardLoader.getController();

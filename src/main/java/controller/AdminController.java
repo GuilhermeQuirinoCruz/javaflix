@@ -1,30 +1,37 @@
-
 package controller;
-
-import java.io.IOException;
-import main.App;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
-import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
+import java.io.IOException;
+import javafx.application.Platform;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import main.App;
 
 public class AdminController implements Initializable {
 
     @FXML
-    private Button btnGenero;
-    @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private ImageView imgLogo;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         App.changeTitle("Admin");
-    }    
+        
+        Platform.runLater(() -> {
+            imgLogo.setImage(new Image("https://firebasestorage.googleapis.com/v0/b/javaflix-7d4ee.appspot.com/o/logo.png?alt=media&token=b8a3aa5d-e405-40aa-a5b0-a5be6aa241ae&_gl=1*690tts*_ga*MTgxMjY2Nzg3LjE2ODQyNzc2OTE.*_ga_CW55HF8NVT*MTY4NjE0MTgzMy42LjEuMTY4NjE0NzA5Mi4wLjAuMA.."));
+            try {
+                AbrirMidias();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+    }
     
     private void SetAnchor(AnchorPane anchorPane)
     {
@@ -35,7 +42,7 @@ public class AdminController implements Initializable {
     }
     
     @FXML
-    private void OpenGenero(ActionEvent event) throws IOException {
+    private void AbrirGeneros() throws IOException {
         AnchorPane apGenero = (AnchorPane) App.newFXML("generoList").load();
         anchorPane.getChildren().setAll(apGenero);
         
@@ -43,7 +50,7 @@ public class AdminController implements Initializable {
     }
     
     @FXML
-    private void OpenMidia(ActionEvent event) throws IOException {
+    private void AbrirMidias() throws IOException {
         AnchorPane apMidia = (AnchorPane) App.newFXML("midiaList").load();
         anchorPane.getChildren().setAll(apMidia);
         
@@ -53,7 +60,5 @@ public class AdminController implements Initializable {
     @FXML
     private void SignOut() throws IOException{
         App.changeScene(App.newScene(App.newFXML("login"), 800, 600));
-        //((Stage)btnGenero.getScene().getWindow()).close();
     }
-
 }

@@ -6,9 +6,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 
-public class NoSelectionModel extends TableView.TableViewSelectionModel {
+public class TableViewNoSelectionModel extends TableView.TableViewSelectionModel {
 
-    public NoSelectionModel(TableView tableView) {
+    public TableViewNoSelectionModel(TableView tableView) {
         super(tableView);
     }
 

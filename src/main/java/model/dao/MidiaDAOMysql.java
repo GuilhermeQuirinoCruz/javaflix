@@ -53,7 +53,7 @@ public class MidiaDAOMysql extends MidiaDAO {
     public boolean Atualizar(Midia midia) {
         try{
             this.connection = dbMysql.getConnection();
-            String sql = "UPDATE  midia SET titulo = ?, descricao = ?, video = ?, capa = ?, idGenero = ?, trailer = ? WHERE id = ?;";
+            String sql = "UPDATE midia SET titulo = ?, descricao = ?, video = ?, capa = ?, idGenero = ?, trailer = ? WHERE id = ?;";
             this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             this.comando.setString(1, midia.getTitulo());
             this.comando.setString(2, midia.getDescricao());

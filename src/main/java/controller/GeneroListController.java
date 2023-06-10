@@ -26,7 +26,7 @@ import main.App;
 import model.Genero;
 import service.GeneroService;
 import ui.HBoxCell;
-import ui.NoSelectionModel;
+import ui.TableViewNoSelectionModel;
 import ui.SVGIcon;
 
 public class GeneroListController implements Initializable {
@@ -116,7 +116,7 @@ public class GeneroListController implements Initializable {
         });
         
         tvGeneros.getItems().setAll(FXCollections.observableList(generos));
-        tvGeneros.setSelectionModel(new NoSelectionModel(tvGeneros));
+        tvGeneros.setSelectionModel(new TableViewNoSelectionModel(tvGeneros));
     }
         
     private void AbrirTelaCadastro(Genero genero, boolean editar, ArrayList<Button> botoes) throws IOException {

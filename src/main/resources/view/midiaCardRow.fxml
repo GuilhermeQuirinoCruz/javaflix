@@ -3,4 +3,4 @@
 <?import javafx.scene.control.ListView?>
 
 
-<ListView fx:id="lvCards" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="HORIZONTAL" prefHeight="225.0" prefWidth="300.0" style="-fx-background-color: &quot;#FFFFFF&quot;;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MidiaCardRowController" />
+<ListView fx:id="lvCards" focusTraversable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="HORIZONTAL" prefHeight="225.0" prefWidth="300.0" style="-fx-background-color: &quot;#FFFFFF&quot;;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MidiaCardRowController" />

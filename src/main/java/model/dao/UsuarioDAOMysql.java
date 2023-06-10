@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import model.Usuario;
 import model.database.DatabaseMysql;
+import model.Usuario;
 import java.sql.Date;
 import model.Midia;
 
@@ -22,16 +22,16 @@ public class UsuarioDAOMysql extends UsuarioDAO {
     }
 
     @Override
-    public boolean Inserir() {
+    public boolean Inserir(Usuario usuario) {
         try{
             this.connection = dbMysql.getConnection();
             String sql = "INSERT INTO usuario (email,senha,nome,admin,dataExpiracao) VALUES (?,?,?,?,?);";
             this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            this.comando.setString(1, this.getUsuario().getEmail());
-            this.comando.setString(2, this.getUsuario().getSenha());
-            this.comando.setString(3, this.getUsuario().getNome());
-            this.comando.setBoolean(4, this.getUsuario().isAdmin());
-            this.comando.setDate(5,Date.valueOf(this.getUsuario().getDataExpiracao()));
+            this.comando.setString(1, usuario.getEmail());
+            this.comando.setString(2, usuario.getSenha());
+            this.comando.setString(3, usuario.getNome());
+            this.comando.setBoolean(4, usuario.isAdmin());
+            this.comando.setDate(5,Date.valueOf(usuario.getDataExpiracao()));
             
            if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
@@ -41,10 +41,7 @@ public class UsuarioDAOMysql extends UsuarioDAO {
                 this.connection.rollback();
                 return false;
             }
-            
-            
-        }
-        catch(Exception e){
+        } catch(Exception e) {
              try {
                 this.connection.rollback();
             } catch (SQLException ex) {
@@ -52,52 +49,48 @@ public class UsuarioDAOMysql extends UsuarioDAO {
             }
             return false;
         }
-        
     }
 
     @Override
-    public boolean Atualizar() {
-        try{
+    public boolean Atualizar(Usuario usuario) {
+        try {
             this.connection = dbMysql.getConnection();
-            String sql = "UPDATE usuario SET email = ?,senha = ?,nome = ?,admin = ? WHERE id = ?;";
+            String sql = "UPDATE usuario SET email = ?,senha = ?,nome = ?, dataExpiracao = ?,admin = ? WHERE id = ?;";
+            //
+            //
             this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            this.comando.setString(1, this.getUsuario().getEmail());
-            this.comando.setString(2, this.getUsuario().getSenha());
-            this.comando.setString(3, this.getUsuario().getNome());
-            //this.comando.setString(4, this.getUsuario().getDataExpiracao()); Converter Calendar para Date
-            this.comando.setBoolean(4, this.getUsuario().isAdmin());
-            this.comando.setInt(5, this.getUsuario().getId());
+            this.comando.setString(1, usuario.getEmail());
+            this.comando.setString(2, usuario.getSenha());
+            this.comando.setString(3, usuario.getNome());
+            this.comando.setDate(4,Date.valueOf(usuario.getDataExpiracao()));
+            this.comando.setBoolean(5, usuario.isAdmin());
+            this.comando.setInt(6, usuario.getId());
             
-           if (this.comando.executeUpdate() > 0) {
+            if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
                 return true;
             } else {
                 this.connection.rollback();
                 return false;
             }
-            
-            
-        }
-        catch(Exception e){
-             try {
+        } catch(Exception e) {
+            try {
                 this.connection.rollback();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+            
             return false;
         }
-        
-        
-        
     }
 
     @Override
-    public boolean Excluir() {
+    public boolean Excluir(int idUsuario) {
          try {
             this.connection = dbMysql.getConnection();
             String sql = "DELETE FROM usuario WHERE id = ?;";
             this.comando = this.connection.prepareStatement(sql);
-            this.comando.setInt(1, this.getUsuario().getId());
+            this.comando.setInt(1, idUsuario);
 
             if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
@@ -112,9 +105,9 @@ public class UsuarioDAOMysql extends UsuarioDAO {
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+            
             return false;
         }
-        
     }
    
 
@@ -151,30 +144,20 @@ public class UsuarioDAOMysql extends UsuarioDAO {
         try{
             this.connection = dbMysql.getConnection();
            // String sql = "SELECT id,email,senha,nome,dataExpiracao,admin FROM usuario WHERE email = ?;";
-           String sql = "SELECT id,email FROM usuario WHERE email = ?;";
+            String sql = "SELECT id,email FROM usuario WHERE email = ?;";
             comando = connection.prepareStatement(sql);
             this.comando.setString(1,email);
             
             ResultSet rs = comando.executeQuery();
             rs.next();
-            Usuario user = new Usuario();
-            user.setId(rs.getInt("id"));
-            user.setEmail(rs.getString("email"));
+            Usuario usuario = new Usuario();
+            usuario.setId(rs.getInt("id"));
+            usuario.setEmail(rs.getString("email"));
             
-            
-            
-            //TODO: VER COMO CONVERTER A DATA DE EXPIRACAO
-                
-            return user;
-            
-        
-            
-        }
-        catch(SQLException e){
+            return usuario;
+        } catch(SQLException e) {
             return null;
         }
-       
-       
     }
 
     @Override
@@ -188,27 +171,17 @@ public class UsuarioDAOMysql extends UsuarioDAO {
             
             ResultSet rs = comando.executeQuery();
             rs.next();
-            Usuario user = new Usuario();
-            user.setId(rs.getInt("id"));
-            user.setEmail(rs.getString("email"));
-            user.setSenha(rs.getString("senha"));
-            user.setNome(rs.getString("nome"));
-            user.setAdmin(rs.getBoolean("admin"));
-            
-            
-            
-            
-            //TODO: VER COMO CONVERTER A DATA DE EXPIRACAO
+            Usuario usuario = new Usuario();
+            usuario.setId(rs.getInt("id"));
+            usuario.setEmail(rs.getString("email"));
+            usuario.setSenha(rs.getString("senha"));
+            usuario.setNome(rs.getString("nome"));
+            usuario.setAdmin(rs.getBoolean("admin"));
                 
-            return user;
-            
-        
-            
-        }
-        catch(SQLException e){
+            return usuario;
+        } catch(SQLException e) {
             return null;
         }
-       
     }
 
     @Override
@@ -220,7 +193,6 @@ public class UsuarioDAOMysql extends UsuarioDAO {
             this.comando.setInt(1, idUsuario);
             this.comando.setInt(2, idMidia);
             
-            
            if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
                 
@@ -229,10 +201,7 @@ public class UsuarioDAOMysql extends UsuarioDAO {
                 this.connection.rollback();
                 return false;
             }
-            
-            
-        }
-        catch(Exception e){
+        } catch(Exception e) {
              try {
                 this.connection.rollback();
             } catch (SQLException ex) {
@@ -240,14 +209,13 @@ public class UsuarioDAOMysql extends UsuarioDAO {
             }
             return false;
         }
-        
     }
 
     @Override
-    public ArrayList<Midia> ListaMidiaFavoritada(int idUsuario) {
+    public ArrayList<Midia> ListaMidiasFavoritadas(int idUsuario) {
         try {
             this.connection = dbMysql.getConnection();
-            String sql = "SELECT * FROM favorita f JOIN midia m ON f.idMidia = m.id WHERE f.idUsuario = ?;";
+            String sql = "SELECT * FROM midia m JOIN favorita f ON m.id = f.idMidia WHERE f.idUsuario = ?;";
             comando = connection.prepareStatement(sql);
             this.comando.setInt(1, idUsuario);
             ResultSet rs = comando.executeQuery();
@@ -262,18 +230,13 @@ public class UsuarioDAOMysql extends UsuarioDAO {
                 midia.setTrailer(rs.getString("trailer"));
                 midia.setVideo(rs.getString("video"));
               
-               
-                
                 midias.add(midia);
             }
-            return midias;
-
             
+            return midias;
         } catch (SQLException e) {
             return null;
         }
-        
-        
     }
 
     @Override
@@ -285,31 +248,40 @@ public class UsuarioDAOMysql extends UsuarioDAO {
             this.comando.setInt(1, idUsuario);
             this.comando.setInt(2, idMidia);
             
-            
-           if (this.comando.executeUpdate() > 0) {
+            if (this.comando.executeUpdate() > 0) {
                 this.connection.commit();
                 
                 return true;
             } else {
                 this.connection.rollback();
+                
                 return false;
             }
-            
-            
-        }
-        catch(Exception e){
-             try {
+        } catch(Exception e) {
+            try {
                 this.connection.rollback();
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
+             
             return false;
         }
-        
-        
     }
-    
-    
-    
-    
+
+    @Override
+    public boolean IsMidiaFavoritada(int idUsuario, int idMidia) {
+        try{
+            this.connection = dbMysql.getConnection();
+            String sql = "SELECT * FROM favorita WHERE idUsuario = ? AND idMidia = ?;";
+            this.comando = this.connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            this.comando.setInt(1, idUsuario);
+            this.comando.setInt(2, idMidia);
+            
+            return this.comando.executeQuery().next();
+        } catch(Exception e) {
+            e.printStackTrace();
+            
+            return false;
+        }
+    }
 }

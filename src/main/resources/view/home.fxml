@@ -3,7 +3,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.ImageView?>
@@ -15,8 +14,8 @@
       <HBox alignment="CENTER_LEFT" prefHeight="75.0" prefWidth="600.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="imgLogo" fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" onAction="#CarregarListViewMidias" text="Refresh" />
-            <Button mnemonicParsing="false" text="Favoritos" visible="false" />
+            <Button mnemonicParsing="false" onAction="#CarregarListViewMidias" text="Home" />
+            <Button mnemonicParsing="false" onAction="#CarregarFavoritos" text="Favoritos" />
             <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <MenuButton fx:id="mbConta" alignment="CENTER" mnemonicParsing="false">
@@ -42,6 +41,6 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </HBox>
-      <ListView fx:id="lvMidias" layoutX="14.0" layoutY="85.0" maxHeight="1.7976931348623157E308" prefHeight="310.0" prefWidth="590.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0" />
+      <AnchorPane fx:id="apHome" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0" />
    </children>
 </AnchorPane>

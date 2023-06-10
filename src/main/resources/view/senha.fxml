@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SenhaController">
+   <children>
+      <Label alignment="CENTER" layoutX="86.0" layoutY="14.0" prefHeight="30.0" prefWidth="128.0" text="Alterar Senha" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+      <VBox layoutX="200.0" layoutY="68.0" prefHeight="117.0" prefWidth="100.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" prefHeight="50.0" prefWidth="135.0" text="Senha Atual" HBox.hgrow="NEVER" />
+                  <PasswordField fx:id="pfAtual" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" prefHeight="50.0" prefWidth="135.0" text="Nova Senha" HBox.hgrow="NEVER" />
+                  <PasswordField fx:id="pfNova" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="85.0" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+               <children>
+                  <Label maxHeight="1.7976931348623157E308" prefHeight="50.0" prefWidth="135.0" text="Confirme a nova senha" HBox.hgrow="NEVER" />
+                  <PasswordField fx:id="pfConfirmar" HBox.hgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="300.0" layoutY="100.0" prefHeight="30.0" prefWidth="135.0" spacing="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+         <children>
+            <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Confirmar" text="OK" HBox.hgrow="ALWAYS" />
+            <Button layoutX="10.0" layoutY="10.0" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#Cancelar" text="Cancelar" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

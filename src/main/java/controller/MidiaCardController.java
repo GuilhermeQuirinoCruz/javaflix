@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,11 +11,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import model.Midia;
+import ui.SVGIcon;
 
 public class MidiaCardController implements Initializable {
 
+    @FXML
+    private AnchorPane apCard;
     @FXML
     private ImageView imgCapa;
     @FXML
@@ -33,7 +38,11 @@ public class MidiaCardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        Platform.runLater(() -> {
+            btnPlay.setGraphic(SVGIcon.getIcon("Play", "#000000"));
+            btnFavorito.setGraphic(SVGIcon.getIcon("Favorito", "#000000"));
+            btnDetalhes.setGraphic(SVGIcon.getIcon("Mais", "#000000"));
+        });
     }
     
     public void BuildCard(Midia midia, HomeController homeController) {
@@ -49,6 +58,9 @@ public class MidiaCardController implements Initializable {
                 } else {
                     imgCapa.setImage(new Image(midia.getCapa()));
                 }
+                imgCapa.fitWidthProperty().bind(apCard.widthProperty());
+                imgCapa.fitHeightProperty().bind(apCard.heightProperty());
+                
                 return null;
             }
         };
@@ -73,6 +85,13 @@ public class MidiaCardController implements Initializable {
         homeController.PlayMidia(this.midia);
     }
     
+    @FXML
+    private void Favoritar() {
+        homeController.FavoritarMidia(this.midia.getId(), this.midia.getTitulo());
+    }
     
-    
+    @FXML
+    private void Detalhes() {
+        
+    }
 }

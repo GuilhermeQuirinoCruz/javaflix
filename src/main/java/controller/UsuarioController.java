@@ -11,12 +11,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import java.time.LocalDate;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+
 import main.App;
 import model.Usuario;
 import service.UsuarioService;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.time.LocalDate;
+import utils.PasswordHash;
 
 public class UsuarioController implements Initializable {
 
@@ -27,6 +30,8 @@ public class UsuarioController implements Initializable {
     @FXML
     private TextField txtEmail;
     @FXML
+    private Label lblSenha;
+    @FXML
     private PasswordField psSenha;
     @FXML
     private PasswordField psConfirmaSenha;
@@ -36,10 +41,12 @@ public class UsuarioController implements Initializable {
     private Button btnAtualizar;
     @FXML
     private Button btnExcluir;
+    @FXML
+    private Button btnRedefinir;
     
-    private Usuario usuario = new Usuario();
     private UsuarioService usuarioService;
     private HomeController homeController;
+    private int idUsuario;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -50,11 +57,11 @@ public class UsuarioController implements Initializable {
         btnCadastrar.setVisible(true);
         btnAtualizar.setVisible(false);
         btnExcluir.setVisible(false);
-    }  
+        btnRedefinir.setVisible(false);
+    }
     
     public void SetUsuario(Usuario usuario) {
-        this.usuario = usuario;
-        
+        idUsuario = usuario.getId();
         txtNome.setText(usuario.getNome());
         txtEmail.setText(usuario.getEmail());
         lblTitulo.setText("Atualizar");
@@ -62,96 +69,114 @@ public class UsuarioController implements Initializable {
         btnCadastrar.setVisible(false);
         btnAtualizar.setVisible(true);
         btnExcluir.setVisible(true);
+        btnRedefinir.setVisible(true);
+        lblSenha.setVisible(false);
+        psSenha.setVisible(false);
     }
     
-    private void GetUsuario(){
-        this.usuario.setNome(txtNome.getText());
-        this.usuario.setEmail(txtEmail.getText());
-        this.usuario.setAdmin(false);
-       
-        LocalDate date = LocalDate.now();
+    private Usuario GetUsuario(){
+        Usuario usuario = new Usuario();
         
-        this.usuario.setDataExpiracao(date);
+        usuario.setId(idUsuario);
+        usuario.setNome(txtNome.getText());
+        usuario.setEmail(txtEmail.getText());
+        usuario.setAdmin(false);
+       
+        usuario.setDataExpiracao(LocalDate.now());
+        
+        return usuario;
     }
     
     public void SetHomeController(HomeController homeController) {
         this.homeController = homeController;
     }
     
+    private void ExibirErroSenha() {
+        
+    }
+    
     @FXML
     public void Cadastrar() throws IOException{
-        GetUsuario();
+        Usuario usuario = GetUsuario();
         
         if(!psSenha.getText().equals(psConfirmaSenha.getText())){
-            Alert confirmacao = new Alert(Alert.AlertType.ERROR);
-            confirmacao.setTitle("Erro ao cadastrar.");
-            confirmacao.setHeaderText(null);
-            confirmacao.setContentText("Senhas não correspodem!!");
-            confirmacao.show();
+            Alert erroCadastro = new Alert(Alert.AlertType.ERROR);
+            erroCadastro.setTitle("Erro ao cadastrar");
+            erroCadastro.setHeaderText(null);
+            erroCadastro.setContentText("Senhas não correspodem!!");
+            erroCadastro.show();
         } else {
-
-          usuario.setSenha(HashPassword(psSenha.getText()));
+          usuario.setSenha(PasswordHash.HashString(psSenha.getText()));
 
           usuarioService.Inserir(usuario);
           ((Stage)lblTitulo.getScene().getWindow()).close();
         }
     }
     
-    public String HashPassword(String password){
-        String generatedPassword = null;
-        
-        try {
-            // Create MessageDigest instance for MD5
-            MessageDigest md = MessageDigest.getInstance("MD5");
-
-            // Add password bytes to digest
-            md.update(password.getBytes());
-
-            // Get the hash's bytes
-            byte[] bytes = md.digest();
-
-            // This bytes[] has bytes in decimal format. Convert it to hexadecimal format
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-              sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-              }
-
-            // Get complete hashed password in hex format
-            generatedPassword = sb.toString();
-        } catch (NoSuchAlgorithmException e) {
-          e.printStackTrace();
-        }
-        
-        return generatedPassword;
-    }
-    
     @FXML
     private void Atualizar() {
-        GetUsuario();
+        Usuario usuario = GetUsuario();
         
-        String senhaHash = HashPassword(psSenha.getText());
-        Usuario usuarioBD = usuarioService.RetornaUsuarioById(this.usuario.getId());
+        String senhaHash = PasswordHash.HashString(psConfirmaSenha.getText());
+        Usuario usuarioBD = usuarioService.RetornaUsuarioById(idUsuario);
         
         if (senhaHash.equals(usuarioBD.getSenha())) {
-            this.usuario.setSenha(senhaHash);
-            usuarioService.Atualizar(this.usuario);
+            usuario.setSenha(senhaHash);
+            usuarioService.Atualizar(usuario);
             
-            homeController.SetUsuario(this.usuario);
+            homeController.SetUsuario(usuario);
             ((Stage)lblTitulo.getScene().getWindow()).close();
         }
     }
     
     @FXML
     private void Excluir() throws IOException {
-        GetUsuario();
+        String senhaHash = PasswordHash.HashString(psSenha.getText());
+        Usuario usuario = usuarioService.RetornaUsuarioById(idUsuario);
         
-        String senhaHash = HashPassword(psSenha.getText());
-        Usuario usuarioBD = usuarioService.RetornaUsuarioById(this.usuario.getId());
-        
-        if (senhaHash.equals(usuarioBD.getSenha())) {
-            usuarioService.Excluir(this.usuario);
+        if (senhaHash.equals(usuario.getSenha())) {
+            usuarioService.Excluir(idUsuario);
             homeController.Sair();
             ((Stage)lblTitulo.getScene().getWindow()).close();
+        } else {
+            Alert erroExcluir = new Alert(Alert.AlertType.ERROR);
+            erroExcluir.setTitle("Erro ao excluir");
+            erroExcluir.setHeaderText(null);
+            erroExcluir.setContentText("Senha Incorreta!");
+            erroExcluir.show();
         }
+    }
+    
+    @FXML
+    private void Redefinir() throws IOException {
+        FXMLLoader loader = App.newFXML("senha");
+        AnchorPane apSenha = (AnchorPane) loader.load();
+        
+        SenhaController senhaController = loader.getController();
+        senhaController.SetUsuarioController(this);
+        
+        Stage stageCadastro = App.newWindow(App.newScene(apSenha, 500, 300));
+        
+        stageCadastro.initModality(Modality.APPLICATION_MODAL);
+        stageCadastro.show();
+    }
+    
+    public boolean RedefinirSenha(String senhaAtual, String senhaNova) throws IOException {
+        senhaAtual = PasswordHash.HashString(senhaAtual);
+        Usuario usuario = usuarioService.RetornaUsuarioById(idUsuario);
+        
+        if (senhaAtual.equals(usuario.getSenha())) {
+            usuario = GetUsuario();
+            usuario.setSenha(PasswordHash.HashString(senhaNova));
+            
+            usuarioService.Atualizar(usuario);
+            
+            homeController.Sair();
+            ((Stage)lblTitulo.getScene().getWindow()).close();
+            
+            return true;
+        }
+        
+        return false;
     }
 }

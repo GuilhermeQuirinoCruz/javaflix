@@ -18,22 +18,19 @@ public class UsuarioService {
     
     public void Inserir(Usuario usuario) {
         this.database.Conectar();
-        this.usuarioDAO.setUsuario(usuario);
-        this.usuarioDAO.Inserir();
+        this.usuarioDAO.Inserir(usuario);
         this.database.Desconectar();
     }
     
     public void Atualizar(Usuario usuario){
         this.database.Conectar();
-        this.usuarioDAO.setUsuario(usuario);
-        this.usuarioDAO.Atualizar();
+        this.usuarioDAO.Atualizar(usuario);
         this.database.Desconectar();
     }
     
-    public void Excluir(Usuario usuario){
+    public void Excluir(int idUsuario){
         this.database.Conectar();
-        this.usuarioDAO.setUsuario(usuario);
-        this.usuarioDAO.Excluir();
+        this.usuarioDAO.Excluir(idUsuario);
         this.database.Desconectar();
     }
     
@@ -73,10 +70,17 @@ public class UsuarioService {
         return false;
     }
     
-    public ArrayList<Midia> ListaMidiaFavoritada(int idUsuario){
+    public ArrayList<Midia> ListaMidiasFavoritadas(int idUsuario){
         this.database.Conectar();
-        ArrayList<Midia> midias = this.usuarioDAO.ListaMidiaFavoritada(idUsuario);
+        ArrayList<Midia> midias = this.usuarioDAO.ListaMidiasFavoritadas(idUsuario);
         this.database.Desconectar();
         return midias;
+    }
+    
+    public boolean IsMidiaFavoritada(int idUsuario, int idMidia) {
+        this.database.Conectar();
+        boolean favoritada = this.usuarioDAO.IsMidiaFavoritada(idUsuario, idMidia);
+        this.database.Desconectar();
+        return favoritada;
     }
 }

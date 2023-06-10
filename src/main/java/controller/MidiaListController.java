@@ -27,7 +27,7 @@ import main.App;
 import model.Midia;
 import service.MidiaService;
 import ui.HBoxCell;
-import ui.NoSelectionModel;
+import ui.TableViewNoSelectionModel;
 import ui.SVGIcon;
 
 public class MidiaListController implements Initializable {
@@ -118,7 +118,7 @@ public class MidiaListController implements Initializable {
         });
         
         tvMidias.getItems().setAll(FXCollections.observableList(midias));
-        tvMidias.setSelectionModel(new NoSelectionModel(tvMidias));
+        tvMidias.setSelectionModel(new TableViewNoSelectionModel(tvMidias));
     }
     
     private void AbrirTelaCadastro(Midia midia, boolean editar, ArrayList<Button> botoes) throws IOException {

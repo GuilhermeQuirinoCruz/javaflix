@@ -12,24 +12,23 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import main.App;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 
+import main.App;
 import service.UsuarioService;
 import model.Usuario;
+import utils.PasswordHash;
 
 public class LoginController implements Initializable {
 
     @FXML
     private TextField txtEmail;
     @FXML
-    private PasswordField pfPassword;
+    private PasswordField passwordField;
     
     HomeController homeController;
     
@@ -44,53 +43,27 @@ public class LoginController implements Initializable {
     private void Entrar() throws IOException {
         Usuario usuario;
         UsuarioService usuarioService = new UsuarioService();
-        String generatedPassword = null;
-
-        try {
-            // Create MessageDigest instance for MD5
-            MessageDigest md = MessageDigest.getInstance("MD5");
-
-            // Add password bytes to digest
-            md.update(pfPassword.getText().getBytes());
-
-            // Get the hash's bytes
-            byte[] bytes = md.digest();
-
-            // This bytes[] has bytes in decimal format. Convert it to hexadecimal format
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-
-            // Get complete hashed password in hex format
-            generatedPassword = sb.toString();
-            // usuario.setSenha(generatedPassword);
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
         
         usuario = usuarioService.RetornaUsuarioByEmail(txtEmail.getText());
         
         if (usuario == null) {
-            System.out.println("nao encontrado!");
-            Alert confirmacao = new Alert(Alert.AlertType.ERROR);
-            confirmacao.setTitle("Erro ao fazer login");
-            confirmacao.setHeaderText(null);
-            confirmacao.setContentText("Usuario nao encontrado!!");
-            confirmacao.show();
+            Alert erroLogin = new Alert(Alert.AlertType.ERROR);
+            erroLogin.setTitle("Erro ao fazer login");
+            erroLogin.setHeaderText(null);
+            erroLogin.setContentText("Usuário não encontrado!");
+            erroLogin.show();
             
             return;
         }
         
         usuario = usuarioService.RetornaUsuarioById(usuario.getId());
         
-        if (!usuario.getSenha().equals(generatedPassword)) {
-            System.out.println("Senha incorreta!");
-            Alert confirmacao = new Alert(Alert.AlertType.ERROR);
-            confirmacao.setTitle("Erro ao fazer login");
-            confirmacao.setHeaderText(null);
-            confirmacao.setContentText("Senha Incorreta!!");
-            confirmacao.show();
+        if (!usuario.getSenha().equals(PasswordHash.HashString(passwordField.getText()))) {
+            Alert erroLogin = new Alert(Alert.AlertType.ERROR);
+            erroLogin.setTitle("Erro ao fazer login");
+            erroLogin.setHeaderText(null);
+            erroLogin.setContentText("Senha Incorreta!");
+            erroLogin.show();
             
             return;
         }
@@ -109,7 +82,7 @@ public class LoginController implements Initializable {
 
     @FXML
     private void AbreCadastro(ActionEvent event) throws IOException {
-        Scene sceneCadastro = App.newScene(App.newFXML("usuario"), 800, 600);
+        Scene sceneCadastro = App.newScene(App.newFXML("usuario"), 600, 400);
         Stage stageCadastro = App.newWindow(sceneCadastro);
         stageCadastro.initModality(Modality.APPLICATION_MODAL);
         stageCadastro.show();

@@ -9,47 +9,47 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UsuarioController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UsuarioController">
    <children>
-      <Label fx:id="lblTitulo" alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="43.0" prefHeight="32.0" prefWidth="200.0" text="Usuário" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0">
+      <Label fx:id="lblTitulo" alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="43.0" prefHeight="32.0" prefWidth="200.0" styleClass="titulo" text="Usuário" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font size="31.0" />
          </font>
       </Label>
       <VBox alignment="CENTER" layoutX="91.0" layoutY="106.0" prefHeight="251.0" prefWidth="570.0" spacing="20.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="75.0">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="70.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="93.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="RIGHT" text="Nome" HBox.hgrow="ALWAYS" />
-                  <TextField fx:id="txtNome" alignment="CENTER" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" style="-fx-font-size: 18;" text="Nome" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtNome" style="-fx-min-height: 30; -fx-min-width: 350; -fx-font-size: 16;" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="68.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="92.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="E-mail" HBox.hgrow="ALWAYS" />
-                  <TextField fx:id="txtEmail" alignment="CENTER" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 18;" text="E-mail" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtEmail" alignment="CENTER" style="-fx-min-height: 30; -fx-min-width: 350; -fx-font-size: 16;" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="70.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="200.0" spacing="94.0">
                <children>
-                  <Label fx:id="lblSenha" alignment="CENTER" contentDisplay="CENTER" text="Senha" HBox.hgrow="ALWAYS" />
-                  <PasswordField fx:id="psSenha" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblSenha" alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 18;" text="Senha" HBox.hgrow="ALWAYS" />
+                  <PasswordField fx:id="psSenha" style="-fx-min-height: 30; -fx-min-width: 350; -fx-font-size: 16;" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="168.0" prefHeight="25.0" prefWidth="200.0" spacing="9.0">
                <children>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Confirme a Senha" HBox.hgrow="ALWAYS" />
-                  <PasswordField fx:id="psConfirmaSenha" HBox.hgrow="ALWAYS" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" style="-fx-font-size: 18;" text="Confirme a Senha" HBox.hgrow="ALWAYS" />
+                  <PasswordField fx:id="psConfirmaSenha" style="-fx-min-height: 30; -fx-min-width: 350;" />
                </children>
             </HBox>
          </children>
       </VBox>
       <HBox layoutX="249.0" layoutY="308.0" prefHeight="26.0" prefWidth="443.0" spacing="10.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
          <children>
-            <Button fx:id="btnRedefinir" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#Redefinir" prefHeight="48.0" prefWidth="126.0" text="Redefinir Senha" />
-            <Button fx:id="btnAtualizar" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#Atualizar" prefHeight="48.0" prefWidth="126.0" text="Atualizar" />
-            <Button fx:id="btnExcluir" layoutX="67.0" layoutY="10.0" mnemonicParsing="false" onAction="#Excluir" prefHeight="48.0" prefWidth="126.0" text="Excluir" />
-            <Button fx:id="btnCadastrar" mnemonicParsing="false" onAction="#Cadastrar" prefHeight="48.0" prefWidth="126.0" text="Cadastrar" />
+            <Button fx:id="btnRedefinir" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#Redefinir" prefHeight="39.0" prefWidth="155.0" style="-fx-font-size: 15;" text="Redefinir Senha" />
+            <Button fx:id="btnAtualizar" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#Atualizar" prefHeight="48.0" prefWidth="126.0" style="-fx-font-size: 15;" text="Atualizar" />
+            <Button fx:id="btnExcluir" layoutX="67.0" layoutY="10.0" mnemonicParsing="false" onAction="#Excluir" prefHeight="48.0" prefWidth="126.0" style="-fx-font-size: 15;" text="Excluir" />
+            <Button fx:id="btnCadastrar" mnemonicParsing="false" onAction="#Cadastrar" prefHeight="48.0" prefWidth="126.0" style="-fx-font-size: 15;" text="Cadastrar" />
          </children>
       </HBox>
    </children>

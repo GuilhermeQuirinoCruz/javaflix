@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminController">
    <children>
       <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="100.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fx:id="imgLogo" fitHeight="90.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" />
-            <Button mnemonicParsing="false" onAction="#AbrirGeneros" prefHeight="40.0" prefWidth="488.0" text="Gêneros" VBox.vgrow="ALWAYS" />
-            <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#AbrirMidias" prefHeight="40.0" prefWidth="488.0" text="Midias" />
-            <Button layoutX="15.0" layoutY="80.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="40.0" prefWidth="488.0" text="Sair " />
+            <Button mnemonicParsing="false" onAction="#AbrirGeneros" prefHeight="40.0" prefWidth="488.0" style="-fx-font-size: 15;" text="Gêneros" VBox.vgrow="ALWAYS" />
+            <Button layoutX="15.0" layoutY="15.0" mnemonicParsing="false" onAction="#AbrirMidias" prefHeight="40.0" prefWidth="488.0" style="-fx-font-size: 15;" text="Midias" />
+            <Button layoutX="15.0" layoutY="80.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="40.0" prefWidth="488.0" style="-fx-font-size: 16;" text="Sair " />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />

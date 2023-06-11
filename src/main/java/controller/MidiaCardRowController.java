@@ -28,7 +28,9 @@ public class MidiaCardRowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         midiaService = new MidiaService();
+       
         lvCards.setSelectionModel(new ListViewNoSelectionModel());
+       // lvCards.getStyleClass().add("background");
     }
     
     public void CarregarCards(Genero genero, HomeController homeController) throws IOException {
@@ -51,8 +53,10 @@ public class MidiaCardRowController implements Initializable {
                     final AnchorPane apMidiaCard = (AnchorPane) midiaCardLoader.load();
                     MidiaCardController midiaCardController = midiaCardLoader.getController();
                     midiaCardController.BuildCard(midia, homeController);
+                     
 
                     Platform.runLater(() ->{
+                         
                         lvCards.getItems().add(apMidiaCard);
                     });
                     

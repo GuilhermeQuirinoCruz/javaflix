@@ -155,7 +155,7 @@ public class UsuarioController implements Initializable {
         SenhaController senhaController = loader.getController();
         senhaController.SetUsuarioController(this);
         
-        Stage stageCadastro = App.newWindow(App.newScene(apSenha, 500, 300));
+        Stage stageCadastro = App.newWindow(App.newScene(apSenha, 600, 300));
         
         stageCadastro.initModality(Modality.APPLICATION_MODAL);
         stageCadastro.show();

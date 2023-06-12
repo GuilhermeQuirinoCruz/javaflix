@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MidiaController">
+<AnchorPane id="AnchorPane" minHeight="200.0" minWidth="300.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MidiaController">
    <children>
       <Label fx:id="lblTitulo" alignment="CENTER" layoutX="285.0" layoutY="27.0" styleClass="titulo" text="Label" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
          <font>
@@ -18,48 +18,48 @@
       </Label>
       <VBox fx:id="vBoxMidia" alignment="CENTER" layoutX="108.0" layoutY="68.0" prefHeight="266.0" prefWidth="570.0" spacing="10.0" AnchorPane.bottomAnchor="66.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="65.0">
          <children>
-            <HBox fx:id="hBoxId" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
+            <HBox fx:id="hBoxId" alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID" HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblId" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID" HBox.hgrow="ALWAYS" />
+                  <Label maxHeight="1.7976931348623157E308" prefHeight="27.0" prefWidth="100.0" text="ID" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblId" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="27.0" prefWidth="403.0" text="ID" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="200.0" spacing="37.0" VBox.vgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Título" HBox.hgrow="ALWAYS" />
+                  <Label prefWidth="100.0" text="Título" HBox.hgrow="ALWAYS" />
                   <TextField fx:id="txtTitulo" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="7.0">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Descrição" />
+                  <Label prefHeight="27.0" prefWidth="100.0" text="Descrição" />
                   <TextField fx:id="txtDescricao" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0" spacing="35.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="160.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Vídeo" />
+                  <Label prefWidth="100.0" text="Vídeo" />
                   <TextField fx:id="txtVideo" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="196.0" prefHeight="100.0" prefWidth="200.0" spacing="37.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="196.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Capa" />
+                  <Label prefWidth="100.0" text="Capa" />
                   <TextField fx:id="txtCapa" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="214.0" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="214.0" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label text="Trailer" />
+                  <Label prefWidth="100.0" text="Trailer" />
                   <TextField fx:id="txtTrailer" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="226.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="226.0" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label text="Gênero" />
-                  <ComboBox fx:id="cmbGenero" maxWidth="1.7976931348623157E308" prefWidth="150.0" style="-fx-min-width: 150;">
+                  <Label prefWidth="100.0" text="Gênero" HBox.hgrow="ALWAYS" />
+                  <ComboBox fx:id="cmbGenero" maxWidth="1.7976931348623157E308" prefHeight="34.0" prefWidth="100.0" style="-fx-min-width: 150;" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets />
                      </HBox.margin>
                   </ComboBox>
                </children>

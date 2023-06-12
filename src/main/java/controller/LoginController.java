@@ -76,7 +76,7 @@ public class LoginController implements Initializable {
             homeController = loader.getController();
             homeController.SetUsuario(usuario);
 
-            App.changeScene(App.newScene(apHome, 800, 600));
+            App.changeScene(App.newScene(apHome, 1200, 700));
         }
     }
 

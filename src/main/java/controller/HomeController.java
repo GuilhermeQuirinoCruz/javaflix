@@ -91,14 +91,11 @@ public class HomeController implements Initializable {
         AnchorPane.setTopAnchor(node, 0d);
         AnchorPane.setLeftAnchor(node, 0d);
         AnchorPane.setRightAnchor(node, 0d);
-        
-        
     }
     
     @FXML
     private void CarregarListViewMidias() throws IOException {
         ListView lvMidias = new ListView();
-        apHome.getStyleClass().add("background");
         apHome.getChildren().setAll(lvMidias);
         
         SetAnchor(lvMidias);
@@ -183,8 +180,10 @@ public class HomeController implements Initializable {
         spFavoritos.setContent(gpFavoritos);
         spFavoritos.fitToWidthProperty().set(true);
         spFavoritos.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
+        spFavoritos.getStyleClass().add("background");
         gpFavoritos.setHgap(10);
         gpFavoritos.setVgap(10);
+        gpFavoritos.getStyleClass().add("background");
         
         int i = 0;
         int j = 0;
@@ -238,7 +237,7 @@ public class HomeController implements Initializable {
         detalhesController.CarregarMidia(midia);
         detalhesController.SetHomeController(this);
         
-        Stage stageDetalhes = App.newWindow(App.newScene(apDetalhes, 600, 500));
+        Stage stageDetalhes = App.newWindow(App.newScene(apDetalhes, 800, 600));
         
         stageDetalhes.initModality(Modality.APPLICATION_MODAL);
         stageDetalhes.show();

@@ -126,6 +126,12 @@ public class UsuarioController implements Initializable {
             
             homeController.SetUsuario(usuario);
             ((Stage)lblTitulo.getScene().getWindow()).close();
+        } else {
+            Alert erroAtualizar = new Alert(Alert.AlertType.ERROR);
+            erroAtualizar.setTitle("Erro ao atualizar os dados");
+            erroAtualizar.setHeaderText(null);
+            erroAtualizar.setContentText("Senha Incorreta!");
+            erroAtualizar.show();
         }
     }
     
@@ -155,7 +161,7 @@ public class UsuarioController implements Initializable {
         SenhaController senhaController = loader.getController();
         senhaController.SetUsuarioController(this);
         
-        Stage stageCadastro = App.newWindow(App.newScene(apSenha, 600, 300));
+        Stage stageCadastro = App.newWindow(App.newScene(apSenha, 650, 300));
         
         stageCadastro.initModality(Modality.APPLICATION_MODAL);
         stageCadastro.show();

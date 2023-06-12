@@ -30,6 +30,7 @@ public class MidiaCardRowController implements Initializable {
         midiaService = new MidiaService();
        
         lvCards.setSelectionModel(new ListViewNoSelectionModel());
+        
        // lvCards.getStyleClass().add("background");
     }
     

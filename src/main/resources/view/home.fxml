@@ -17,8 +17,14 @@
             <Button mnemonicParsing="false" onAction="#CarregarListViewMidias" text="Home">
                <HBox.margin>
                   <Insets left="20.0" />
-               </HBox.margin></Button>
-            <Button mnemonicParsing="false" onAction="#CarregarFavoritos" text="Favoritos" />
+               </HBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button mnemonicParsing="false" onAction="#CarregarFavoritos" text="Favoritos">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="5.0" HBox.hgrow="ALWAYS">
                <children>
                   <MenuButton fx:id="mbConta" alignment="CENTER" mnemonicParsing="false" style="-fx-background-color: #2d3439;">
@@ -33,6 +39,9 @@
                            </cursor>
                         </ImageView>
                      </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </MenuButton>
                </children>
                <padding>

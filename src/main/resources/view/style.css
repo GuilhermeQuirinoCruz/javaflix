@@ -118,10 +118,17 @@
     -fx-background-color: transparent;
 }
 
-.list-cell:even,
-.list-cell:odd,
+
 .table-row-cell:even,
 .table-row-cell:odd {
+    
+    -fx-control-inner-background: derive(-fx-base, 15%);
+}
+
+
+.list-cell:even,
+.list-cell:odd
+ {
     -fx-background-color: black;
     -fx-control-inner-background: derive(-fx-base, 15%);
 }

@@ -7,25 +7,25 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="apGenero" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GeneroController">
+<AnchorPane id="AnchorPane" fx:id="apGenero" prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GeneroController">
    <children>
-      <Label fx:id="lblTitulo" alignment="CENTER" layoutX="270.0" layoutY="14.0" text="Título" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
+      <Label fx:id="lblTitulo" alignment="CENTER" layoutX="270.0" layoutY="14.0" styleClass="titulo" text="Título" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="15.0">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <VBox fx:id="vBoxGenero" alignment="CENTER" layoutX="15.0" layoutY="50.0" prefHeight="251.0" prefWidth="570.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0">
+      <VBox fx:id="vBoxGenero" alignment="CENTER" layoutX="15.0" layoutY="50.0" prefHeight="251.0" prefWidth="570.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="70.0">
          <children>
             <HBox fx:id="hBoxId" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID" HBox.hgrow="ALWAYS" />
-                  <Label fx:id="lblId" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ID" HBox.hgrow="ALWAYS" />
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="115.0" prefWidth="0.0" style="-fx-font-size: 20;" text="ID" HBox.hgrow="ALWAYS" />
+                  <Label fx:id="lblId" layoutX="10.0" layoutY="10.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="115.0" prefWidth="0.0" style="-fx-font-size: 20;" text="ID" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Nome" HBox.hgrow="ALWAYS" />
-                  <TextField fx:id="txtNome" maxWidth="1.7976931348623157E308" prefHeight="26.0" prefWidth="38.0" HBox.hgrow="ALWAYS" />
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="114.0" prefWidth="0.0" style="-fx-font-size: 20;" text="Nome" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="txtNome" maxWidth="1.7976931348623157E308" prefHeight="37.0" prefWidth="0.0" style="-fx-font-size: 16;" HBox.hgrow="ALWAYS" />
                </children>
             </HBox>
          </children></VBox>

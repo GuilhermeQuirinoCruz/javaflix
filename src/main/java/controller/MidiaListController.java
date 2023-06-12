@@ -66,7 +66,8 @@ public class MidiaListController implements Initializable {
             private final Button btnEditar = HBoxCell.getHBoxButton("");
             
             {
-                btnEditar.setGraphic(SVGIcon.getIcon("Editar", "#0000FF"));
+                btnEditar.setGraphic(SVGIcon.getIcon("Editar", "#FF5733"));
+                btnEditar.getStyleClass().add("buttonCadastro");
                 btnEditar.setOnAction(e -> {
                     Midia midia = getTableView().getItems().get(getIndex());
                     try {
@@ -96,7 +97,8 @@ public class MidiaListController implements Initializable {
             private final Button btnExcluir = HBoxCell.getHBoxButton("");
             
             {
-                btnExcluir.setGraphic(SVGIcon.getIcon("Excluir", "#FF0000"));
+                btnExcluir.setGraphic(SVGIcon.getIcon("Excluir", "#FF5733"));
+                btnExcluir.getStyleClass().add("buttonCadastro");
                 btnExcluir.setOnAction(e -> {
                     Midia midia = getTableView().getItems().get(getIndex());
                     ExcluirMidia(midia.getId());
@@ -119,13 +121,14 @@ public class MidiaListController implements Initializable {
         
         tvMidias.getItems().setAll(FXCollections.observableList(midias));
         tvMidias.setSelectionModel(new TableViewNoSelectionModel(tvMidias));
+        tvMidias.setFixedCellSize(46.0);
     }
     
     private void AbrirTelaCadastro(Midia midia, boolean editar, ArrayList<Button> botoes) throws IOException {
         FXMLLoader loader = App.newFXML("midia");
         AnchorPane apMidia = (AnchorPane) loader.load();
         
-        Scene sceneMidia = App.newScene(apMidia, 400, 500);
+        Scene sceneMidia = App.newScene(apMidia, 550, 600);
         stageMidia = App.newWindow(sceneMidia);
         stageMidia.initModality(Modality.APPLICATION_MODAL);
         

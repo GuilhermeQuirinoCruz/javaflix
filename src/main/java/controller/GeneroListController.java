@@ -64,7 +64,9 @@ public class GeneroListController implements Initializable {
             private final Button btnEditar = HBoxCell.getHBoxButton("");
             
             {
-                btnEditar.setGraphic(SVGIcon.getIcon("Editar", "#0000FF"));
+                btnEditar.setGraphic(SVGIcon.getIcon("Editar", "#FF5733"));
+                btnEditar.getStyleClass().add("buttonCadastro");
+                
                 btnEditar.setOnAction(e -> {
                     Genero genero = getTableView().getItems().get(getIndex());
                     try {
@@ -94,7 +96,9 @@ public class GeneroListController implements Initializable {
             private final Button btnExcluir = HBoxCell.getHBoxButton("");
             
             {
-                btnExcluir.setGraphic(SVGIcon.getIcon("Excluir", "#FF0000"));
+                btnExcluir.setGraphic(SVGIcon.getIcon("Excluir", "#FF5733"));
+                btnExcluir.getStyleClass().add("buttonCadastro");
+                
                 btnExcluir.setOnAction(e -> {
                     Genero genero = getTableView().getItems().get(getIndex());
                     ExcluirGenero(genero.getId());
@@ -117,6 +121,7 @@ public class GeneroListController implements Initializable {
         
         tvGeneros.getItems().setAll(FXCollections.observableList(generos));
         tvGeneros.setSelectionModel(new TableViewNoSelectionModel(tvGeneros));
+        tvGeneros.setFixedCellSize(46.0);
     }
         
     private void AbrirTelaCadastro(Genero genero, boolean editar, ArrayList<Button> botoes) throws IOException {

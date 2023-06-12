@@ -58,11 +58,14 @@ public class DetalhesController implements Initializable {
 //        lblDescricao.setText(midia.getDescricao());
         
         Platform.runLater(() ->{
-            if (!midia.getTrailer().equals(""))
-            {
+            if (!midia.getTrailer().equals("")) {
                 mediaPlayer = new MediaPlayer(new Media(midia.getTrailer()));
             } else {
                 mediaPlayer = new MediaPlayer(new Media("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
+            }
+            
+            if (midia.getVideo().equals("")) {
+                btnPlay.setVisible(false);
             }
 
             mediaPlayer.setVolume(0.1);

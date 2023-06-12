@@ -20,12 +20,11 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.AnchorPane;        
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import main.App;
 import model.Genero;
 import model.Midia;
@@ -53,7 +52,7 @@ public class HomeController implements Initializable {
     private Usuario usuario;
     private boolean favoritos;
 
-    private final String URL_LOGO = "https://firebasestorage.googleapis.com/v0/b/javaflix-7d4ee.appspot.com/o/logo.png?alt=media&token=b8a3aa5d-e405-40aa-a5b0-a5be6aa241ae&_gl=1*690tts*_ga*MTgxMjY2Nzg3LjE2ODQyNzc2OTE.*_ga_CW55HF8NVT*MTY4NjE0MTgzMy42LjEuMTY4NjE0NzA5Mi4wLjAuMA..";
+    private final String URL_LOGO = "https://firebasestorage.googleapis.com/v0/b/javaflix-6a120.appspot.com/o/2.png?alt=media&token=465be657-ded1-4fd7-89f3-e348bfaed33b";
     private final String URL_USER = "https://cdn-icons-png.flaticon.com/512/8792/8792047.png";
     
     @Override
@@ -63,6 +62,7 @@ public class HomeController implements Initializable {
         generoService = new GeneroService();
         midiaService = new MidiaService();
         usuarioService = new UsuarioService();
+        apHome.getStyleClass().add("background");
 
         Platform.runLater(new Thread(new Task<Void>() {
             @Override
@@ -97,6 +97,7 @@ public class HomeController implements Initializable {
     private void CarregarListViewMidias() throws IOException {
         ListView lvMidias = new ListView();
         apHome.getChildren().setAll(lvMidias);
+        
         SetAnchor(lvMidias);
         
         lvMidias.setSelectionModel(new ListViewNoSelectionModel());
@@ -109,6 +110,8 @@ public class HomeController implements Initializable {
             ArrayList<Midia> midias = midiaService.ListarPorGenero(genero.getId());
             if (midias != null && !midias.isEmpty()) {
                 Label lblGenero = new Label(genero.getNome());
+                lblGenero.getStyleClass().add("labelGenero");
+                
                 lvMidias.getItems().add(lblGenero);
                 
                 midiaCardRowLoader = App.newFXML("midiaCardRow");
@@ -177,8 +180,10 @@ public class HomeController implements Initializable {
         spFavoritos.setContent(gpFavoritos);
         spFavoritos.fitToWidthProperty().set(true);
         spFavoritos.hbarPolicyProperty().setValue(ScrollPane.ScrollBarPolicy.NEVER);
+        spFavoritos.getStyleClass().add("background");
         gpFavoritos.setHgap(10);
         gpFavoritos.setVgap(10);
+        gpFavoritos.getStyleClass().add("background");
         
         int i = 0;
         int j = 0;
@@ -186,6 +191,7 @@ public class HomeController implements Initializable {
         for (Midia midia : midias) {
             final FXMLLoader midiaCardLoader = App.newFXML("midiaCard");
             final AnchorPane apMidiaCard = (AnchorPane) midiaCardLoader.load();
+            apMidiaCard.getStyleClass().add("background");
             
             MidiaCardController midiaCardController = midiaCardLoader.getController();
             midiaCardController.BuildCard(midia, this);
@@ -231,7 +237,7 @@ public class HomeController implements Initializable {
         detalhesController.CarregarMidia(midia);
         detalhesController.SetHomeController(this);
         
-        Stage stageDetalhes = App.newWindow(App.newScene(apDetalhes, 600, 500));
+        Stage stageDetalhes = App.newWindow(App.newScene(apDetalhes, 800, 600));
         
         stageDetalhes.initModality(Modality.APPLICATION_MODAL);
         stageDetalhes.show();

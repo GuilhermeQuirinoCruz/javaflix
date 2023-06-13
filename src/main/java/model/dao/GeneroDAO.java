@@ -9,4 +9,5 @@ public abstract class GeneroDAO {
     public abstract boolean Atualizar(Genero genero);
     public abstract boolean Excluir(int idGenero);
     public abstract ArrayList<Genero> Listar();
+    public abstract int QtdMidiasCadastradas(int idGenero);
 }

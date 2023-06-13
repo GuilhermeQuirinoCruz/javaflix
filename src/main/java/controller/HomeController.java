@@ -234,8 +234,8 @@ public class HomeController implements Initializable {
         AnchorPane apDetalhes = (AnchorPane) loader.load();
         
         DetalhesController detalhesController = loader.getController();
-        detalhesController.CarregarMidia(midia);
         detalhesController.SetHomeController(this);
+        detalhesController.CarregarMidia(midia);
         
         Stage stageDetalhes = App.newWindow(App.newScene(apDetalhes, 800, 600));
         
@@ -246,9 +246,5 @@ public class HomeController implements Initializable {
     @FXML
     public void Sair() throws IOException {
         App.changeScene(App.newScene(App.newFXML("login"), 800, 600));
-    }
-    
-    public boolean isFavorited(int idMidia){
-        return true;
     }
 }

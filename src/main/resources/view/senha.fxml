@@ -22,7 +22,7 @@
             <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                <children>
                   <Label maxHeight="1.7976931348623157E308" prefHeight="50.0" prefWidth="220.0" text="Senha Atual" HBox.hgrow="ALWAYS" />
-                  <PasswordField fx:id="pfAtual" style="-fx-min-width: 305;" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
+                  <PasswordField fx:id="pfAtual" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -31,7 +31,7 @@
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label maxHeight="1.7976931348623157E308" prefHeight="50.0" prefWidth="220.0" text="Nova Senha" HBox.hgrow="NEVER" />
-                  <PasswordField fx:id="pfNova" style="-fx-min-width: 305;" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
+                  <PasswordField fx:id="pfNova" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />
@@ -40,7 +40,7 @@
             <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="85.0" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label maxHeight="1.7976931348623157E308" prefHeight="30.0" prefWidth="220.0" text="Confirme a nova senha" HBox.hgrow="NEVER" />
-                  <PasswordField fx:id="pfConfirmar" minWidth="288.0" prefHeight="30.0" prefWidth="288.0" style="-fx-min-height: 30; -fx-min-width: 305;" HBox.hgrow="ALWAYS" />
+                  <PasswordField fx:id="pfConfirmar" minWidth="288.0" prefHeight="30.0" prefWidth="288.0" styleClass="CustomTextField" HBox.hgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />

@@ -177,7 +177,12 @@ public class GeneroListController implements Initializable {
         Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacao.setTitle("Confirme a exclusão");
         confirmacao.setHeaderText(null);
-        confirmacao.setContentText("Deseja realmente excluir?");
+        int qtdMidias = this.generoService.QtdMidiasCadastradas(idGenero);
+        String midiasCadastradas = qtdMidias == 1 ? " mídia cadastrada com esse gênero será excluída."
+                : " mídias cadastradas com esse gênero serão excluídas.";
+        confirmacao.setContentText(qtdMidias
+                + midiasCadastradas
+                +"\nDeseja realmente excluir?");
         
         Optional<ButtonType> result = confirmacao.showAndWait();
         if (result.get() == ButtonType.OK) {

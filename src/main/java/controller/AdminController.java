@@ -24,7 +24,7 @@ public class AdminController implements Initializable {
         App.changeTitle("Admin");
         
         Platform.runLater(() -> {
-            imgLogo.setImage(new Image("https://firebasestorage.googleapis.com/v0/b/javaflix-7d4ee.appspot.com/o/logo.png?alt=media&token=b8a3aa5d-e405-40aa-a5b0-a5be6aa241ae&_gl=1*690tts*_ga*MTgxMjY2Nzg3LjE2ODQyNzc2OTE.*_ga_CW55HF8NVT*MTY4NjE0MTgzMy42LjEuMTY4NjE0NzA5Mi4wLjAuMA.."));
+            imgLogo.setImage(new Image("https://firebasestorage.googleapis.com/v0/b/javaflix-6a120.appspot.com/o/2.png?alt=media&token=465be657-ded1-4fd7-89f3-e348bfaed33b"));
             try {
                 AbrirMidias();
             } catch (IOException ex) {

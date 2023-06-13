@@ -46,6 +46,7 @@ public class UsuarioService {
         this.database.Conectar();
         Usuario usuario = this.usuarioDAO.RetornaUsuarioByEmail(email);
         this.database.Desconectar();
+        
         return usuario;
     }
     
@@ -53,6 +54,7 @@ public class UsuarioService {
         this.database.Conectar();
         Usuario usuario = this.usuarioDAO.RetornaUsuarioById(id);
         this.database.Desconectar();
+        
         return usuario;
     }
     
@@ -60,6 +62,7 @@ public class UsuarioService {
         this.database.Conectar();
         this.usuarioDAO.FavoritaMidia(idUsuario, idMidia);
         this.database.Desconectar();
+        
         return true;
     }
     
@@ -67,6 +70,7 @@ public class UsuarioService {
         this.database.Conectar();
         this.usuarioDAO.DesfavoritaMidia(idUsuario, idMidia);
         this.database.Desconectar();
+        
         return false;
     }
     
@@ -74,6 +78,7 @@ public class UsuarioService {
         this.database.Conectar();
         ArrayList<Midia> midias = this.usuarioDAO.ListaMidiasFavoritadas(idUsuario);
         this.database.Desconectar();
+        
         return midias;
     }
     
@@ -81,6 +86,7 @@ public class UsuarioService {
         this.database.Conectar();
         boolean favoritada = this.usuarioDAO.IsMidiaFavoritada(idUsuario, idMidia);
         this.database.Desconectar();
+        
         return favoritada;
     }
 }

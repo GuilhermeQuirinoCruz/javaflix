@@ -69,7 +69,7 @@ public class MidiaListController implements Initializable {
                 btnEditar.setGraphic(SVGIcon.getIcon("Editar", "#FF5733"));
                 btnEditar.getStyleClass().add("buttonCadastro");
                 btnEditar.setOnAction(e -> {
-                    Midia midia = getTableView().getItems().get(getIndex());
+                    final Midia midia = getTableView().getItems().get(getIndex());
                     try {
                         AbrirAtualizacao(midia);
                     } catch (IOException ex) {
@@ -100,7 +100,7 @@ public class MidiaListController implements Initializable {
                 btnExcluir.setGraphic(SVGIcon.getIcon("Excluir", "#FF5733"));
                 btnExcluir.getStyleClass().add("buttonCadastro");
                 btnExcluir.setOnAction(e -> {
-                    Midia midia = getTableView().getItems().get(getIndex());
+                    final Midia midia = getTableView().getItems().get(getIndex());
                     ExcluirMidia(midia.getId());
                 });
                 container = new HBox(10, btnExcluir);
@@ -177,7 +177,9 @@ public class MidiaListController implements Initializable {
         Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
         confirmacao.setTitle("Confirme a exclusão");
         confirmacao.setHeaderText(null);
-        confirmacao.setContentText("Deseja realmente excluir?");
+        confirmacao.setContentText("Essa mídia foi favoritada por " +
+                + this.midiaService.QtdFavoritos(idMidia) + " usuário(s)."
+                + "\nDeseja realmente excluir?");
         
         Optional<ButtonType> result = confirmacao.showAndWait();
         if (result.get() == ButtonType.OK) {

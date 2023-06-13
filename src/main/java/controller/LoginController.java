@@ -30,8 +30,6 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField passwordField;
     
-    HomeController homeController;
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         App.changeTitle("Login");
@@ -73,7 +71,7 @@ public class LoginController implements Initializable {
         } else {
             FXMLLoader loader = App.newFXML("home");
             AnchorPane apHome = (AnchorPane)loader.load();
-            homeController = loader.getController();
+            HomeController homeController = loader.getController();
             homeController.SetUsuario(usuario);
 
             App.changeScene(App.newScene(apHome, 1200, 700));

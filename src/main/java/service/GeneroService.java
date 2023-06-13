@@ -40,4 +40,12 @@ public class GeneroService {
         
         return generos;
     }
+    
+    public int QtdMidiasCadastradas(int idGenero) {
+        this.database.Conectar();
+        int qtdMidias = this.generoDAO.QtdMidiasCadastradas(idGenero);
+        this.database.Desconectar();
+        
+        return qtdMidias;
+    }
 }

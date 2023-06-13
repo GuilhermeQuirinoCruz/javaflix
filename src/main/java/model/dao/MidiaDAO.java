@@ -12,4 +12,5 @@ public abstract class MidiaDAO {
     public abstract ArrayList<Midia> ListarResumido();
     public abstract ArrayList<Midia> ListarPorGenero(int idGenero);
     public abstract Midia getMidiaById(int id);
+    public abstract int QtdFavoritos(int idMidia);
 }

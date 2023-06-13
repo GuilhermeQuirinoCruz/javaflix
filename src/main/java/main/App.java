@@ -16,7 +16,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         window = stage;
-        changeScene(newScene(newFXML("login"), 1000, 700));
+        changeScene(newScene(newFXML("login"), 800, 600));
     }
 
     public static void changeRoot(String fxml) throws IOException {
@@ -30,12 +30,15 @@ public class App extends Application {
     public static void changeScene(Scene scene) throws IOException {
         currentScene = scene;
         window.setScene(currentScene);
+        window.centerOnScreen();
         window.show();
     }
     
     public static Stage newWindow(Scene scene) {
         Stage stage = new Stage();
         stage.setScene(scene);
+        stage.centerOnScreen();
+        
         return stage;
     }
     

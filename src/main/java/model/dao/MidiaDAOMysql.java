@@ -152,6 +152,7 @@ public class MidiaDAOMysql extends MidiaDAO {
                 
                 midias.add(midia);
             }
+            
             return midias;
         } catch (SQLException e) {
             return null;
@@ -207,6 +208,26 @@ public class MidiaDAOMysql extends MidiaDAO {
             return midias;
         } catch (SQLException e) {
             return null;
+        }
+    }
+    
+    @Override
+    public int QtdFavoritos(int idMidia) {
+        try {
+            this.connection = dbMysql.getConnection();
+            String sql = "SELECT COUNT(*) qtd FROM favorita WHERE idMidia = ?;";
+            comando = connection.prepareStatement(sql);
+            comando.setInt(1, idMidia);
+            ResultSet rs = comando.executeQuery();
+
+            int qtdFavoritos = 0;
+            if (rs.next()) {
+                qtdFavoritos = rs.getInt("qtd");
+            }
+            
+            return qtdFavoritos;
+        } catch (SQLException e) {
+            return 0;
         }
     }
 }

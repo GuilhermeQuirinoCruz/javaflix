@@ -46,7 +46,23 @@ public class SenhaController implements Initializable {
             return;
         }
         
+        if (pfAtual.getText().equals(pfNova.getText())) {
+            Alert erroRedefinir = new Alert(Alert.AlertType.ERROR);
+            erroRedefinir.setTitle("Erro ao redefinir a senha");
+            erroRedefinir.setHeaderText(null);
+            erroRedefinir.setContentText("A senha nova não pode ser igual à antiga!");
+            erroRedefinir.show();
+            
+            return;
+        }
+        
         if (usuarioController.RedefinirSenha(pfAtual.getText(), pfNova.getText())) {
+            Alert sucessoRedefinir = new Alert(Alert.AlertType.INFORMATION);
+            sucessoRedefinir.setTitle("Senha redefinida com sucesso!");
+            sucessoRedefinir.setHeaderText(null);
+            sucessoRedefinir.setContentText("Faça login novamente");
+            sucessoRedefinir.show();
+            
             Fechar();
         } else {
             Alert erroRedefinir = new Alert(Alert.AlertType.ERROR);

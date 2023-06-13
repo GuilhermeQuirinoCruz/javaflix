@@ -38,10 +38,6 @@ public class DetalhesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Platform.runLater(() -> {
-            ((Stage)apMediaView.getScene().getWindow()).setOnHiding( e -> {
-                mediaPlayer.dispose();
-            });
-            
             btnPlay.setGraphic(SVGIcon.getIcon("Play", "#000000"));
         });
     }
@@ -55,7 +51,6 @@ public class DetalhesController implements Initializable {
         lblTitulo.setText(midia.getTitulo());
         lblDescricao.setText("Gênero: " + midia.getGenero().getNome()
                 + "\nDescrição: " + midia.getDescricao());
-//        lblDescricao.setText(midia.getDescricao());
         
         Platform.runLater(() ->{
             if (!midia.getTrailer().equals("")) {
@@ -63,6 +58,10 @@ public class DetalhesController implements Initializable {
             } else {
                 mediaPlayer = new MediaPlayer(new Media("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
             }
+            
+            ((Stage)apMediaView.getScene().getWindow()).setOnHiding( e -> {
+                mediaPlayer.dispose();
+            });
             
             if (midia.getVideo().equals("")) {
                 btnPlay.setVisible(false);
@@ -78,6 +77,11 @@ public class DetalhesController implements Initializable {
 
             mvTrailer.fitWidthProperty().bind(apMediaView.widthProperty());
             mvTrailer.fitHeightProperty().bind(apMediaView.heightProperty());
+            
+            mediaPlayer.setOnError(() -> {
+                System.out.println("Erro ao carregar vídeo. Tentando novamente...");
+                CarregarMidia(midia);
+            });
         });
     }
     

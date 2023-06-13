@@ -7,7 +7,6 @@ import model.dao.UsuarioDAO;
 public interface Database {
     
     public void Conectar();
-    
     public void Desconectar();
     
     public GeneroDAO getGeneroDAO();

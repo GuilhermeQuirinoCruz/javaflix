@@ -65,9 +65,9 @@ public class MidiaCardRowController implements Initializable {
                 }
             };
 
-            Thread threadCapa = new Thread(taskCard);
-            threadCapa.setDaemon(true);
-            threadCapa.start();
+            Thread threadCard = new Thread(taskCard);
+            threadCard.setDaemon(true);
+            threadCard.start();
         }
     }
 }

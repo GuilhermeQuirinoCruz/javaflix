@@ -117,4 +117,25 @@ public class GeneroDAOMysql extends GeneroDAO {
             return null;
         }
     }
+    
+    @Override
+    public int QtdMidiasCadastradas(int idGenero) {
+        try {
+            this.connection = dbMysql.getConnection();
+            String sql = "SELECT COUNT(*) qtd FROM midia WHERE idGenero = ?;";
+            comando = connection.prepareStatement(sql);
+            this.comando.setInt(1, idGenero);
+            ResultSet rs = comando.executeQuery();
+            
+            
+            int qtdMidias = 0;
+            if (rs.next()) {
+                qtdMidias = rs.getInt("qtd");
+            }
+
+            return qtdMidias;
+        } catch (SQLException e) {
+            return 0;
+        }
+    }
 }

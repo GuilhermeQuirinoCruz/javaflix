@@ -52,6 +52,7 @@ public class MidiaService {
     public Midia GetMidiaById(int id){
         this.database.Conectar();
         Midia midia = this.midiaDAO.getMidiaById(id);
+        this.database.Desconectar();
         
         return midia;
     }
@@ -62,5 +63,13 @@ public class MidiaService {
         this.database.Desconectar();
         
         return midias;
+    }
+    
+    public int QtdFavoritos(int idMidia) {
+        this.database.Conectar();
+        int qtdFavoritos = this.midiaDAO.QtdFavoritos(idMidia);
+        this.database.Desconectar();
+        
+        return qtdFavoritos;
     }
 }

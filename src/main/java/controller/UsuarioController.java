@@ -12,7 +12,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.time.LocalDate;
+import java.util.Optional;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 
@@ -91,10 +93,6 @@ public class UsuarioController implements Initializable {
         this.homeController = homeController;
     }
     
-    private void ExibirErroSenha() {
-        
-    }
-    
     @FXML
     public void Cadastrar() throws IOException{
         Usuario usuario = GetUsuario();
@@ -137,12 +135,30 @@ public class UsuarioController implements Initializable {
     
     @FXML
     private void Excluir() throws IOException {
-        String senhaHash = PasswordHash.HashString(psSenha.getText());
+        Alert confirmacao = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacao.setTitle("Confirme a exclusão");
+        confirmacao.setHeaderText(null);
+        confirmacao.setContentText("Deseja realmente excluir a conta?"
+                + "\nESSA AÇÃO NÃO PODE SER DESFEITA!");
+        
+        Optional<ButtonType> result = confirmacao.showAndWait();
+        if (result.get() != ButtonType.OK) {
+            return;
+        }
+        
+        String senhaHash = PasswordHash.HashString(psConfirmaSenha.getText());
         Usuario usuario = usuarioService.RetornaUsuarioById(idUsuario);
         
         if (senhaHash.equals(usuario.getSenha())) {
             usuarioService.Excluir(idUsuario);
             homeController.Sair();
+            
+            Alert sucessoExcluir = new Alert(Alert.AlertType.INFORMATION);
+            sucessoExcluir.setTitle("Conta excluída com sucesso");
+            sucessoExcluir.setHeaderText(null);
+            sucessoExcluir.setContentText("Voltando para tela de login...");
+            sucessoExcluir.show();
+            
             ((Stage)lblTitulo.getScene().getWindow()).close();
         } else {
             Alert erroExcluir = new Alert(Alert.AlertType.ERROR);

@@ -20,13 +20,18 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+            <Button layoutX="20.0" layoutY="166.0" mnemonicParsing="false" onAction="#AbrirGraficos" prefHeight="40.0" prefWidth="488.0" style="-fx-font-size: 15;" text="Gráficos">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             <Button layoutX="15.0" layoutY="80.0" mnemonicParsing="false" onAction="#SignOut" prefHeight="40.0" prefWidth="488.0" style="-fx-font-size: 16;" text="Sair ">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
          </children>
          <padding>
-            <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
+            <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
          </padding>
       </VBox>
     <AnchorPane fx:id="anchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />

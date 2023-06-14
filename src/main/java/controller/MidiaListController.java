@@ -56,7 +56,7 @@ public class MidiaListController implements Initializable {
     }  
     
     private void CarregarTableView(){
-        ArrayList<Midia> midias = midiaService.ListarResumido();
+        ArrayList<Midia> midias = midiaService.Listar();
         tcId.setCellValueFactory(new PropertyValueFactory<>("id"));
         tcGenero.setCellValueFactory(new PropertyValueFactory<>("genero"));
         tcTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));

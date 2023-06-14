@@ -13,7 +13,6 @@ import javafx.scene.layout.HBox;
 import model.Genero;
 import model.Midia;
 import service.GeneroService;
-import service.MidiaService;
 
 public class MidiaController implements Initializable {
     @FXML
@@ -37,17 +36,13 @@ public class MidiaController implements Initializable {
     @FXML
     private TextField txtVideo;
     
-    private GeneroService generoService;
-    private MidiaService midiaService;
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
     } 
     
     public void Carregar(Midia midia, boolean editar, ArrayList<Button> botoes) {
-        generoService = new GeneroService();
-        midiaService = new MidiaService();
+        GeneroService generoService = new GeneroService();
         cmbGenero.getItems().addAll(generoService.Listar());
         
         if (midia == null) {
@@ -55,7 +50,6 @@ public class MidiaController implements Initializable {
             hBoxId.setVisible(false);
             cmbGenero.getSelectionModel().selectFirst();
         } else {
-            midia = midiaService.GetMidiaById(midia.getId());
             lblTitulo.setText("Visualizar/Editar");
             lblId.setText(String.valueOf(midia.getId()));
             txtTitulo.setText(midia.getTitulo());

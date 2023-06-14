@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Map;
 import model.Midia;
 import model.dao.MidiaDAO;
 import model.database.Database;
@@ -71,5 +72,13 @@ public class MidiaService {
         this.database.Desconectar();
         
         return qtdFavoritos;
+    }
+    
+    public Map<String, Number> FavoritosPorMidia() {
+        this.database.Conectar();
+        Map<String, Number> favoritos = this.midiaDAO.FavoritosPorMidia();
+        this.database.Desconectar();
+        
+        return favoritos;
     }
 }

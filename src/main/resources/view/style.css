@@ -1,5 +1,5 @@
 .root { 
-    /*-fx-accent: white;*/
+    -fx-accent: #FF5733;
     -fx-focus-color: -fx-accent;
     -fx-background-color: #02030A;
     -fx-control-inner-background: #d7d6d6;
@@ -118,12 +118,10 @@
     -fx-background-color: transparent;
 }
 
-
 .table-row-cell:even,
 .table-row-cell:odd {
     -fx-control-inner-background: derive(-fx-base, 15%);
 }
-
 
 .list-cell:even,
 .list-cell:odd {
@@ -151,11 +149,11 @@
    -fx-background-color: transparent;
 }
 
-.combo-box .list-cell {
-    -fx-text-fill: black;
-    -fx-background-color: derive(-fx-base,45%);
+.combo-box {
+    -fx-background-color: derive(-fx-base, 15%);
 }
 
+.combo-box .list-cell,
 .combo-box .list-view .list-cell {
     -fx-text-fill: white;
     -fx-background-color: black;
@@ -165,4 +163,31 @@
 {
     -fx-text-fill: black;
     -fx-background-color: #FF5733;
+}
+
+.axis {
+    -fx-font-size: 1.4em;
+    -fx-tick-label-fill: white;
+    -fx-font-family: Tahoma;
+    -fx-tick-length: 10;
+    -fx-minor-tick-length: 5;
+}
+
+.chart-pie-label-line {
+    -fx-stroke: #FF5733;
+    -fx-fill: #FF5733;
+}
+
+.chart-pie-label {
+    -fx-fill: white;
+    -fx-font-size: 1em;
+}
+
+.chart-legend {
+   -fx-background-color: white;
+   -fx-stroke: #FF5733;
+}
+
+.chart-legend-item {
+    -fx-font-size: 0.75em;
 }

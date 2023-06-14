@@ -41,6 +41,4 @@ public class Genero {
     public String toString() {
         return nome;
     }
-    
-    
 }

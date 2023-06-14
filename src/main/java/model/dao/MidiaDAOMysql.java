@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import model.Genero;
 import model.Midia;
 import model.database.DatabaseMysql;
@@ -228,6 +230,25 @@ public class MidiaDAOMysql extends MidiaDAO {
             return qtdFavoritos;
         } catch (SQLException e) {
             return 0;
+        }
+    }
+
+    @Override
+    public Map<String, Number> FavoritosPorMidia() {
+        try {
+            this.connection = dbMysql.getConnection();
+            String sql = "SELECT m.titulo, COUNT(*) qtd FROM midia m JOIN favorita f ON m.id = f.idMidia GROUP BY m.id;";
+            comando = connection.prepareStatement(sql);
+            ResultSet rs = comando.executeQuery();
+
+            Map<String, Number> favoritos = new HashMap<>();
+            while (rs.next()) {
+                favoritos.put(rs.getString("titulo"), rs.getInt("qtd"));
+            }
+            
+            return favoritos;
+        } catch (SQLException e) {
+            return null;
         }
     }
 }

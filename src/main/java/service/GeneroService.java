@@ -1,6 +1,7 @@
 package service;
 
 import java.util.ArrayList;
+import java.util.Map;
 import model.Genero;
 import model.dao.GeneroDAO;
 import model.database.Database;
@@ -48,4 +49,22 @@ public class GeneroService {
         
         return qtdMidias;
     }
+    
+    public Map<String, Number> MidiasPorGenero() {
+        this.database.Conectar();
+        Map<String, Number> midias = this.generoDAO.MidiasPorGenero();
+        this.database.Desconectar();
+        
+        return midias;
+    }
+    
+    public Map<String, Number> FavoritosPorGenero() {
+        this.database.Conectar();
+        Map<String, Number> favoritos = this.generoDAO.FavoritosPorGenero();
+        this.database.Desconectar();
+        
+        return favoritos;
+    }
+    
+    
 }

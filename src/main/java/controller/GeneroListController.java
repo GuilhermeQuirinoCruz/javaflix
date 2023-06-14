@@ -42,8 +42,8 @@ public class GeneroListController implements Initializable {
     @FXML
     private TableColumn<Genero, Void> tcExcluir;
     
-    private GeneroService generoService;
     private Stage stageGenero;
+    private GeneroService generoService;
     GeneroController generoController;
 
     @Override

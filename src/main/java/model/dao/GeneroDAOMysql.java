@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import model.Genero;
 import model.database.DatabaseMysql;
 
@@ -136,6 +138,44 @@ public class GeneroDAOMysql extends GeneroDAO {
             return qtdMidias;
         } catch (SQLException e) {
             return 0;
+        }
+    }
+    
+    @Override
+    public Map<String, Number> MidiasPorGenero() {
+        try {
+            this.connection = dbMysql.getConnection();
+            String sql = "SELECT g.nome, COUNT(*) qtd FROM genero g JOIN midia m ON g.id = m.idGenero GROUP BY g.id;";
+            comando = connection.prepareStatement(sql);
+            ResultSet rs = comando.executeQuery();
+
+            Map<String, Number> midias = new HashMap<>();
+            while (rs.next()) {
+                midias.put(rs.getString("nome"), rs.getInt("qtd"));
+            }
+            
+            return midias;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
+    
+    @Override
+    public Map<String, Number> FavoritosPorGenero() {
+        try {
+            this.connection = dbMysql.getConnection();
+            String sql = "SELECT g.nome, COUNT(*) qtd FROM genero g JOIN midia m ON g.id = m.idGenero JOIN favorita f ON m.id = f.idMidia GROUP BY g.id;";
+            comando = connection.prepareStatement(sql);
+            ResultSet rs = comando.executeQuery();
+
+            Map<String, Number> favoritos = new HashMap<>();
+            while (rs.next()) {
+                favoritos.put(rs.getString("nome"), rs.getInt("qtd"));
+            }
+            
+            return favoritos;
+        } catch (SQLException e) {
+            return null;
         }
     }
 }

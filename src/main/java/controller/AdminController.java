@@ -58,6 +58,14 @@ public class AdminController implements Initializable {
     }
     
     @FXML
+    private void AbrirGraficos() throws IOException {
+        AnchorPane apGraficos = (AnchorPane) App.newFXML("graficos").load();
+        anchorPane.getChildren().setAll(apGraficos);
+        
+        SetAnchor(apGraficos);
+    }
+    
+    @FXML
     private void SignOut() throws IOException{
         App.changeScene(App.newScene(App.newFXML("login"), 800, 600));
     }

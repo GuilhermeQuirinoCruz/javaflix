@@ -1,6 +1,7 @@
 package model.dao;
 
 import java.util.ArrayList;
+import java.util.Map;
 import model.Midia;
 
 public abstract class MidiaDAO {
@@ -13,4 +14,5 @@ public abstract class MidiaDAO {
     public abstract ArrayList<Midia> ListarPorGenero(int idGenero);
     public abstract Midia getMidiaById(int id);
     public abstract int QtdFavoritos(int idMidia);
+    public abstract Map<String, Number> FavoritosPorMidia();
 }
